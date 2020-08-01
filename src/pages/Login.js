@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames/bind'
 
-import styles from './Login.scss'
+import styles from 'pages/Login.scss'
 
 const cx = classNames.bind(styles)
 
