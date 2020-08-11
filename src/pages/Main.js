@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 import classNames from 'classnames/bind'
 import { Link } from "react-router-dom"
 
-import styles from './Main.scss'
+import style from 'pages/Main.scss'
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(style)
 
 function Main() {
     return (
         <div className={cx('Main')}>
-            <Link to="/login">로그인</Link>
+            메인페이지
         </div>
     );
 }
