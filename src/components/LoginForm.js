@@ -1,43 +1,53 @@
 import React, { useState } from 'react'
 import classNames from 'classnames/bind'
+import { useHistory} from 'react-router-dom'
 
 import styles from 'components/LoginForm.scss'
+import Input from 'elements/Input.js'
 
 const cx = classNames.bind(styles)
 
 
-function LoginForm({ setHasCookie }) {
-    const [ email, setEmail ] = useState('')
-    const [ password, setPassword ] = useState('')
+function LoginForm(props) {
+    const [form, setForm] = useState({
+        email: '',
+        password: ''
+    })
+    let history = useHistory()
 
-    const loginApi = (user) => {
+    const loginApi = (form) => {
         return fetch('/users/signin', {
             method: 'POST',
             headers: {
                 'Content-Type':'application/'
             },
-            body: JSON.stringify(user)
+            body: JSON.stringify(form)
         }).then(res => res.json())
     }
 
-    const handleEmail = (e) => {
-        setEmail(e.target.value)
+    const initForm = () => {
+        setForm({
+            email: '',
+            password: ''
+        })
     }
-    const handlePassword = (e) => {
-        setPassword(e.target.value)
+
+    const changeForm = (e) => {
+        setForm({
+            ...form,
+            [e.target.name] : e.target.value
+        })   
     }
-    const handleSubmit = async (e) => {
-        alert(email)
-        alert(password)
+
+    const submitForm = async (e) => {
+        alert(form.email)
+        alert(form.password)
         e.preventDefault();
-        if (!email || !password) {
+        if (!form.email || !form.password) {
             return;
         }
-        try {
-            const response = await loginApi({
-            email: email,
-            password: password
-            });
+        /* try {
+            const response = await loginApi(form);
         if (response.result === 'ok') {
             setHasCookie(true);
         } else {
@@ -45,30 +55,26 @@ function LoginForm({ setHasCookie }) {
         }
         } catch (err) {
             alert('로그인에 실패했습니다.');
-            setEmail('');
-            setPassword('');
-            console.error('login error', err);
+            initForm();
+        } */
+
+        if(form.email === 'a@a' && form.password === 'a') {
+            props.setHasCookie(true)
+            history.goBack()
+        } else {
+            alert('로그인에 실패했습니다.');
+            initForm();
         }
+
     }
 
     return (
         <form 
             className={cx('LoginForm')}
-            onSubmit={handleSubmit}
-        >
-            <input
-                type="email"
-                name="email"
-                placeholder="이메일"
-                value={email}
-                onChange={handleEmail}
-            />
-            <input
-                type="password"
-                placeholder="비밀번호"
-                value={password}
-                onChange={handlePassword}
-            />
+            onSubmit={submitForm}
+        >   
+            <Input type={"email"} name={"email"} value={form.email} onChange={changeForm} />
+            <Input type={"password"} name={"password"} value={form.password} onChange={changeForm} />
             <button type="submit">로그인</button>
         </form>
     )

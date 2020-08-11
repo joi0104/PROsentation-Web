@@ -11,23 +11,14 @@ import Navbar from 'pages/Navbar'
 const cx = classNames.bind(style)
 
 function App() {
-  const [ cookies, removeCookie ] = useCookies([ 'user' ]);
-  const [ hasCookie, setHasCookie ] = useState(false);
-
-  useEffect(() => {
-    if (cookies.user && cookies.user !== 'undefined') {
-      setHasCookie(true);
-    }
-  }, [cookies]);
-
+  const [ hasCookie, setHasCookie ] = useState(false)
 
   return (
     <div className={cx('App')}>
-      <Navbar />
-      {/*{!hasCookie ? <Redirect to="/login" /> : <Redirect to="/" />}*/}
+      <Navbar hasCookie={hasCookie}/>
         <Switch>
           <Route path="/" exact component={Main} />
-          <Route path="/login" exact component={Login} />
+          <Route path="/login" exact component={() => <Login setHasCookie={setHasCookie} />}/>
         </Switch>
     </div>
   );

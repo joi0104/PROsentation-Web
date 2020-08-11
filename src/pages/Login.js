@@ -6,10 +6,10 @@ import LoginForm from 'components/LoginForm.js'
 
 const cx = classNames.bind(style)
 
-function Login() {
+function Login(props) {
     return (
         <div className={cx('Login')}>
-            <LoginForm />
+            <LoginForm setHasCookie={props.setHasCookie}/>
         </div>
     );
 }
