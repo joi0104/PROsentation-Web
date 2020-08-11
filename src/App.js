@@ -6,6 +6,7 @@ import classNames from 'classnames/bind'
 import style from 'App.scss'
 import Main from 'pages/Main'
 import Login from 'pages/Login'
+import Navbar from 'pages/Navbar'
 
 const cx = classNames.bind(style)
 
@@ -22,7 +23,8 @@ function App() {
 
   return (
     <div className={cx('App')}>
-      {!hasCookie ? <Redirect to="/login" /> : <Redirect to="/" />}
+      <Navbar />
+      {/*{!hasCookie ? <Redirect to="/login" /> : <Redirect to="/" />}*/}
         <Switch>
           <Route path="/" exact component={Main} />
           <Route path="/login" exact component={Login} />
