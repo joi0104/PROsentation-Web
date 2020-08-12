@@ -5,12 +5,12 @@ import classNames from 'classnames/bind'
 
 import style from 'App.scss'
 import Main from 'pages/Main'
-import Login from 'pages/Login'
+import Signin from 'pages/Signin'
 import Navbar from 'pages/Navbar'
 
 const cx = classNames.bind(style)
 
-function App() {
+const App = () => {
   const [ hasCookie, setHasCookie ] = useState(false)
 
   return (
@@ -18,7 +18,7 @@ function App() {
       <Navbar hasCookie={hasCookie}/>
         <Switch>
           <Route path="/" exact component={Main} />
-          <Route path="/login" exact component={() => <Login setHasCookie={setHasCookie} />}/>
+          <Route path="/signin" exact component={() => <Signin setHasCookie={setHasCookie} />}/>
         </Switch>
     </div>
   );

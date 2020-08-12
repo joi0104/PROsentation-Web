@@ -8,15 +8,15 @@ import ProfileDropdown from 'components/ProfileDropdown.js'
 
 const cx = classNames.bind(style)
 
-function Profile(props) {
+const Profile = ({ hasCookie }) => {
     const [ showDropdown, setShowDropdown ] = useState(false)
     let history = useHistory()
 
     const onClick = () => {
-        if (props.hasCookie) {
+        if (hasCookie) {
             setShowDropdown(!showDropdown)
         } else {
-            history.push("/login");
+            history.push("/signin");
         }
     }
 
