@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import classNames from 'classnames/bind'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 import styles from 'components/SigninForm.scss'
 import Input from 'elements/Input.js'
-import Signin from '../pages/Signin'
 
 const cx = classNames.bind(styles)
 
@@ -76,6 +75,7 @@ const SigninForm = ({ setHasCookie }) => {
             <Input type={"email"} name={"email"} value={form.email} onChange={changeForm} />
             <Input type={"password"} name={"password"} value={form.password} onChange={changeForm} />
             <button type="submit">로그인</button>
+            <Link to="/signup">회원가입</Link>
         </form>
     )
 
