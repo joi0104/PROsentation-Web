@@ -48,7 +48,7 @@ const SignupForm = () => {
         if (!form.email || !form.password || !form.phone || !form.username || !coincideCheck) {
             return;
         }
-        axios.post('http://test-server.team-jyb.com:8080/users/signup', form)
+        /*axios.post('http://test-server.team-jyb.com:8080/users/signup', form)
         .then( res => {
             alert(JSON.stringify(res.body));
             initForm()
@@ -58,7 +58,9 @@ const SignupForm = () => {
             alert('회원가입에 실패하였습니다.')
             initForm()
             history.goBack()
-        })
+        })*/
+        initForm()
+        history.goBack()
     }
 
     return (

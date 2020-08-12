@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import classNames from 'classnames/bind'
-import { useHistory} from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
-import styles from 'components/LoginForm.scss'
+import styles from 'components/SigninForm.scss'
 import Input from 'elements/Input.js'
 
 const cx = classNames.bind(styles)
 
-
-function LoginForm(props) {
+const SigninForm = ({ setHasCookie }) => {
     const [form, setForm] = useState({
         email: '',
         password: ''
@@ -59,7 +58,7 @@ function LoginForm(props) {
         } */
 
         if(form.email === 'a@a' && form.password === 'a') {
-            props.setHasCookie(true)
+            setHasCookie(true)
             history.goBack()
         } else {
             alert('로그인에 실패했습니다.');
@@ -70,15 +69,16 @@ function LoginForm(props) {
 
     return (
         <form 
-            className={cx('LoginForm')}
+            className={cx('SigninForm')}
             onSubmit={submitForm}
         >   
             <Input type={"email"} name={"email"} value={form.email} onChange={changeForm} />
             <Input type={"password"} name={"password"} value={form.password} onChange={changeForm} />
             <button type="submit">로그인</button>
+            <Link to="/signup">회원가입</Link>
         </form>
     )
 
 }
 
-export default LoginForm
+export default SigninForm

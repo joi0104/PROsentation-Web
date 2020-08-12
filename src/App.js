@@ -5,7 +5,7 @@ import classNames from 'classnames/bind'
 
 import style from 'App.scss'
 import Main from 'pages/Main'
-import Login from 'pages/Login'
+import Signin from 'pages/Signin'
 import Navbar from 'pages/Navbar'
 import Preparation from 'pages/Preparation'
 import Recoding from 'pages/Recoding'
@@ -16,7 +16,7 @@ import Premium from 'pages/Premium'
 
 const cx = classNames.bind(style)
 
-function App() {
+const App = () => {
   const [ hasCookie, setHasCookie ] = useState(false)
 
   return (

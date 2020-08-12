@@ -1,12 +1,11 @@
 import React from 'react'
 import classNames from 'classnames/bind'
-import { Link } from "react-router-dom"
 
 import style from 'pages/Main.scss'
 
 const cx = classNames.bind(style)
 
-function Main({ hasCookie }) {
+const Main = () => {
     return (
         <div className={cx('Main')}>
             나의 발표를 연습하고 피드백 받아보세요!
