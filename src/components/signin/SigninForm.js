@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import classNames from 'classnames/bind'
 import { useHistory, Link } from 'react-router-dom'
+import axios from 'axios'
 
-import styles from 'components/SigninForm.scss'
+import styles from 'components/signin/SigninForm.scss'
 import Input from 'elements/Input.js'
 
 const cx = classNames.bind(styles)
@@ -13,16 +14,6 @@ const SigninForm = ({ setHasCookie }) => {
         password: ''
     })
     let history = useHistory()
-
-    const loginApi = (form) => {
-        return fetch('/users/signin', {
-            method: 'POST',
-            headers: {
-                'Content-Type':'application/'
-            },
-            body: JSON.stringify(form)
-        }).then(res => res.json())
-    }
 
     const initForm = () => {
         setForm({
@@ -38,41 +29,32 @@ const SigninForm = ({ setHasCookie }) => {
         })   
     }
 
-    const submitForm = async (e) => {
-        alert(form.email)
-        alert(form.password)
+    const onSubmit = (e) => {
         e.preventDefault();
         if (!form.email || !form.password) {
             return;
         }
-        /* try {
-            const response = await loginApi(form);
-        if (response.result === 'ok') {
-            setHasCookie(true);
-        } else {
-            throw new Error(response.error);
-        }
-        } catch (err) {
-            alert('로그인에 실패했습니다.');
-            initForm();
-        } */
-
-        if(form.email === 'a@a' && form.password === 'a') {
-            setHasCookie(true)
+        axios.post('http://test-server.team-jyb.com:8080/user/signin', form)
+        .then( res => {
+            alert(JSON.stringify(res.data));
+            initForm()
             history.goBack()
-        } else {
-            alert('로그인에 실패했습니다.');
-            initForm();
-        }
-
+            setHasCookie(true)
+            })
+        .catch( err => {
+            console.log(err)
+            alert('로그인에 실패하였습니다.')
+            initForm()
+            history.goBack()
+        })
     }
 
     return (
         <form 
             className={cx('SigninForm')}
-            onSubmit={submitForm}
+            onSubmit={onSubmit}
         >   
-            <Input type={"email"} name={"email"} value={form.email} onChange={changeForm} />
+            <Input type={"text"} name={"email"} value={form.email} onChange={changeForm} />
             <Input type={"password"} name={"password"} value={form.password} onChange={changeForm} />
             <button type="submit">로그인</button>
             <Link to="/signup">회원가입</Link>

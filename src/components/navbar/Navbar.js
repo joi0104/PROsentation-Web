@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames/bind'
 
-import styles from 'pages/Navbar.scss'
-import Profile from 'components/Profile.js'
+import styles from 'components/navbar/Navbar.scss'
+import Profile from 'components/navbar/Profile.js'
 
 const cx = classNames.bind(styles)
 

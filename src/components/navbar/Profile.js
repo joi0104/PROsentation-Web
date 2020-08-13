@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import classNames from 'classnames/bind'
 import { useHistory } from 'react-router-dom'
 
-import style from 'components/Profile.scss'
+import style from 'components/navbar/Profile.scss'
 import profileIcon from 'img/profile_icon.png'
-import ProfileDropdown from 'components/ProfileDropdown.js'
+import ProfileDropdown from 'components/navbar/ProfileDropdown.js'
 
 const cx = classNames.bind(style)
 

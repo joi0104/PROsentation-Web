@@ -1,35 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
-import { withCookies, useCookies } from 'react-cookie';
+import React, { useState } from 'react'
+import { Route, BrowserRouter as Router, Redirect } from 'react-router-dom'
+/*import { withCookies, useCookies } from 'react-cookie';*/
 import classNames from 'classnames/bind'
 
 import style from 'App.scss'
-import Main from 'pages/Main'
-import Signin from 'pages/Signin'
-import Navbar from 'pages/Navbar'
-import Preparation from 'pages/Preparation'
-import Recoding from 'pages/Recoding'
-import Result from 'pages/Result'
-import MyVideo from 'pages/MyVideo'
-import Premium from 'pages/Premium'
-
+import Main from 'pages/main/Main.js'
+import Signin from 'pages/signin/Signin.js'
+import Signup from 'pages/signup/Signup.js'
+import Navbar from 'components/navbar/Navbar.js'
+import User from 'pages/user/User.js'
+import Service from 'pages/service/Service.js'
 
 const cx = classNames.bind(style)
 
 const App = () => {
-  const [ hasCookie, setHasCookie ] = useState(false)
+  const [ hasCookie, setHasCookie ] = useState(true)
 
   return (
     <div className={cx('App')}>
       <Router>
         <Navbar hasCookie={hasCookie}/>
-          <Route path="/" exact component={()=> <Main hasCookie={hasCookie}/>} />
-          <Route path="/login" component={() => <Login setHasCookie={setHasCookie} />}/>
-          <Route path="/preparation" component={Preparation} />
-          <Route path="/recoding" component={Recoding} />
-          <Route path="/result" component={Result} />
-          <Route path="/myvideo" component={MyVideo} />
-          <Route path="/premium" component={Premium} />
+          <Route path="/" exact component={()=> <Main hasCookie={hasCookie} />} />
+          <Route path="/signin" component={() => !hasCookie? <Signin setHasCookie={setHasCookie} /> : <Redirect to="/" />}/>
+          <Route path="/signup" component={() => !hasCookie? <Signup /> : <Redirect to="/" />} />
+          <Route path="/service" component={() => hasCookie? <Service/> : <Redirect to="/" />} />
+          <Route path="/user" component={() => hasCookie? <User/> : <Redirect to="/" />} />
       </Router>
     </div>
   );

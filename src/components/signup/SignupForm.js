@@ -3,7 +3,7 @@ import classNames from 'classnames/bind'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
-import style from 'components/SignupForm.scss'
+import style from 'components/signup/SignupForm.scss'
 import Input from 'elements/Input.js'
 
 const cx = classNames.bind(style)
@@ -31,7 +31,7 @@ const SignupForm = () => {
 
     const changePasswordCheck = (e) => {
         setPasswordCheck(e.target.value)
-        if (e.target.value == form.password) {
+        if (e.target.value === form.password) {
             setCoincideCheck(true)
         }
     }
@@ -43,30 +43,29 @@ const SignupForm = () => {
         })   
     }
 
-    const submitForm = async (e) => {
+    const onSubmit = (e) => {
         e.preventDefault();
         if (!form.email || !form.password || !form.phone || !form.username || !coincideCheck) {
             return;
         }
-        /*axios.post('http://test-server.team-jyb.com:8080/users/signup', form)
+        axios.post('http://test-server.team-jyb.com:8080/user/signup', form)
         .then( res => {
-            alert(JSON.stringify(res.body));
+            alert(JSON.stringify(res.data));
             initForm()
             history.goBack()
             })
         .catch( err => {
+            console.log(err)
             alert('회원가입에 실패하였습니다.')
             initForm()
             history.goBack()
-        })*/
-        initForm()
-        history.goBack()
+        })
     }
 
     return (
         <form 
             className={cx('SigninForm')}
-            onSubmit={submitForm}
+            onSubmit={onSubmit}
         >   
             <Input type={"email"} name={"email"} value={form.email} onChange={changeForm} />
             <Input type={"password"} name={"password"} value={form.password} onChange={changeForm} />

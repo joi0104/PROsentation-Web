@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames/bind'
 
-import style from 'pages/Signin.scss'
-import SigninForm from 'components/SigninForm.js'
+import style from 'pages/signin/Signin.scss'
+import SigninForm from 'components/signin/SigninForm.js'
 
 const cx = classNames.bind(style)
 
