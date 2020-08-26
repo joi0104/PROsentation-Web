@@ -42,8 +42,8 @@ PROsentation 프론트 개발을 위한 레포지토리 입니다.
 - `git checkout -b feature/기능이름` 으로 브렌치 생성 및 체크아웃한다.
 - 해당 이슈를 작업한다.
 - `git push origin feature`으로 원격저장소에 푸쉬한다.
-- `origin/feature` -> `origin/develip`을으로 merge requests 요청한다.
-- self review 이후 approve시, merge한다.
+- `origin/feature` -> `origin/develip`을으로 merge requests 요청한다. (issue auto close)
+- self review 이후 approve시, Squash and Merge한다.
 
 ## branch strategy
 - git flow 전략 사용
@@ -55,7 +55,7 @@ PROsentation 프론트 개발을 위한 레포지토리 입니다.
 ## Templates
 - [Commit message Template](https://git.swmgit.org/swmaestro/PROsentation-Frontend/-/wikis/Commit-message-Template)
 ![image](/uploads/90fbe8b1bf28e44f94173a2b2aa41017/image.png)
-- [Isssue Template](https://git.swmgit.org/swmaestro/PROsentation-Frontend/-/wikis/Issue-Template)
+- [Issue Template](https://git.swmgit.org/swmaestro/PROsentation-Frontend/-/wikis/Issue-Template)
 ![image](/uploads/67d5a4f22c1f7655801230d8d8758d0c/image.png)
 ![image](/uploads/335562a3931f6c93b3c99923802c2567/image.png)
 - [Merge requests Template](https://git.swmgit.org/swmaestro/PROsentation-Frontend/-/wikis/Merge-requests-Template)
