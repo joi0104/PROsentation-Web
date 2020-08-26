@@ -25,6 +25,16 @@ PROsentation 프론트 개발을 위한 레포지토리 입니다.
     npm start
 ```
 
+## Stack
+- `react`
+- `react-saga`
+- `redux`
+
+## Project Setting
+- `CRA`
+- `eslint`,`prettier`,`commitlint`,`husky`
+- `gitlab CI/CD` 도입예정
+
 ## Progess
 - [Issue](https://13.125.91.162/swmaestro/PROsentation-Frontend/issues) 및 [Boards](https://13.125.91.162/swmaestro/PROsentation-Frontend/-/boards) 로 관리
 
