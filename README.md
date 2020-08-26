@@ -25,6 +25,12 @@ PROsentation 프론트 개발을 위한 레포지토리 입니다.
     npm start
 ```
 
+## Progess
+- [Issue](https://13.125.91.162/swmaestro/PROsentation-Frontend/issues) 및 [Boards](https://13.125.91.162/swmaestro/PROsentation-Frontend/-/boards) 로 관리
+
+## Development goal
+- [Milestones](https://13.125.91.162/swmaestro/PROsentation-Frontend/-/milestones) 로 관리
+
 ## Workflow
 - 작업할 이슈를 `Doing` 칸반보드에 옮긴다.
 - `git checkout -b feature/기능이름` 으로 브렌치 생성 및 체크아웃한다.
@@ -40,7 +46,7 @@ PROsentation 프론트 개발을 위한 레포지토리 입니다.
     - `feature` -> 기능단위의 작업 브렌치 -> 로컬단에서는 `feature/기능` 으로 관리
     - `hotfix` -> 버그 수정 브렌치
 
-## commit convention
+## Commit convention
 - conventional commit 사용
 ```
 <타입>(!): #<이슈 번호>. <제목>
@@ -68,11 +74,11 @@ PROsentation 프론트 개발을 위한 레포지토리 입니다.
 # ---
 ```
 
-## issue template
+## Issue template
 <img width="927" alt="image" src="https://user-images.githubusercontent.com/28296417/89192871-1f230200-d5e0-11ea-96ef-279cbe0ba64a.png">
 <img width="1001" alt="image" src="https://user-images.githubusercontent.com/28296417/89192794-03b7f700-d5e0-11ea-8b2b-193934299460.png">
 
 
-## pull request template
+## Pull request template
 <img width="1176" alt="image" src="https://user-images.githubusercontent.com/28296417/89194834-dc165e00-d5e2-11ea-8892-a055cc873670.png">
 
