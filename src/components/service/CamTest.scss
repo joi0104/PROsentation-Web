@@ -1,2 +1,10 @@
 .CamTest {
+    display: flex;
+    flex-direction: column;
+    * {
+        margin: 10px auto;
+    }
+    video {
+        max-height: 200px;
+    }
 }
