@@ -1,3 +1,13 @@
 .CheckItems {
-    
+    height: 90%;
+    #notice, #next{
+        height: 15%;
+        display: block;
+        text-align: center;
+        margin: 3% 0;
+    }
+    #itemBoxs{
+        display: block;
+        height: 60%;
+    }
 }

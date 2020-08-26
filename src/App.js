@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { Route, BrowserRouter as Router, Redirect } from 'react-router-dom'
-/*import { withCookies, useCookies } from 'react-cookie';*/
+import { Route, Redirect } from 'react-router-dom'
 import classNames from 'classnames/bind'
 
 import style from 'App.scss'
@@ -18,14 +17,12 @@ const App = () => {
 
   return (
     <div className={cx('App')}>
-      <Router>
         <Navbar hasCookie={hasCookie}/>
           <Route path="/" exact component={()=> <Main hasCookie={hasCookie} />} />
           <Route path="/signin" component={() => !hasCookie? <Signin setHasCookie={setHasCookie} /> : <Redirect to="/" />}/>
           <Route path="/signup" component={() => !hasCookie? <Signup /> : <Redirect to="/" />} />
           <Route path="/service" component={() => hasCookie? <Service/> : <Redirect to="/" />} />
           <Route path="/user" component={() => hasCookie? <User/> : <Redirect to="/" />} />
-      </Router>
     </div>
   );
 }

@@ -18,12 +18,15 @@ const Preparation = () => {
 
     return (
         <div className={cx('Preparation')}>
-            <PreparationNavbar isMicTest={isMicTest} isCamTest={isCamTest} isPPTUpload={isPPTUpload}/>
-            { !isCheckItems? <CheckItems setIsCheckItems={setIsCheckItems}/> : 
-                !isMicTest? <MicTest setIsMicTest={setIsMicTest}/>:
-                !isCamTest? <CamTest setIsCamTest={setIsCamTest}/>:
-                !isPPTUpload? <PPTUpload setIsPPTUpload={setIsPPTUpload}/> : <>완료!</>
-            }
+            <h2>발표 준비하기</h2>
+            <div id="content">
+                <PreparationNavbar isMicTest={isMicTest} isCamTest={isCamTest} isPPTUpload={isPPTUpload}/>
+                { !isCheckItems? <CheckItems setIsCheckItems={setIsCheckItems}/> : 
+                    !isMicTest? <MicTest setIsMicTest={setIsMicTest}/>:
+                    !isCamTest? <CamTest setIsCamTest={setIsCamTest}/>:
+                    !isPPTUpload? <PPTUpload setIsPPTUpload={setIsPPTUpload}/> : <>완료!</>
+                }
+            </div>
         </div>
     );
 };
