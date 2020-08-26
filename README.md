@@ -41,8 +41,8 @@ PROsentation 프론트 개발을 위한 레포지토리 입니다.
 - 작업할 이슈를 `Doing` 칸반보드에 옮긴다.
 - `git checkout -b feature/기능이름` 으로 브렌치 생성 및 체크아웃한다.
 - 해당 이슈를 작업한다.
-- `git push origin feature`으로 원격저장소에 푸쉬한다.
-- `origin/feature` -> `origin/develip`을으로 merge requests 요청한다. (issue auto close)
+- `git push origin feature/기능이름`으로 원격저장소에 푸쉬한다.
+- `origin/feature/기능이름` -> `origin/develop`을으로 merge requests 요청한다. (issue auto close)
 - self review 이후 approve시, Squash and Merge한다.
 
 ## branch strategy
