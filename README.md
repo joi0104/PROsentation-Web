@@ -53,9 +53,9 @@ PROsentation 프론트 개발을 위한 레포지토리 입니다.
     - `hotfix` -> 버그 수정 브렌치
 
 ## Templates
-- [Commit message Template](https://13.125.91.162/swmaestro/PROsentation-Frontend/-/wikis/Commit-message-Template)
-- [Isssue Template](https://13.125.91.162/swmaestro/PROsentation-Frontend/-/wikis/Issue-Template)
-- [Merge requests Template](https://13.125.91.162/swmaestro/PROsentation-Frontend/-/wikis/Merge-requests-Template)
+- [Commit message Template](https://git.swmgit.org/swmaestro/PROsentation-Frontend/-/wikis/Commit-message-Template)
+- [Isssue Template](https://git.swmgit.org/swmaestro/PROsentation-Frontend/-/wikis/Issue-Template)
+- [Merge requests Template](https://git.swmgit.org/swmaestro/PROsentation-Frontend/-/wikis/Merge-requests-Template)
 
 ## Support
 - [SW마에스트로](http://swmaestro.org/user/main.do)
