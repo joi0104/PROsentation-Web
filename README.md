@@ -31,6 +31,9 @@ PROsentation 프론트 개발을 위한 레포지토리 입니다.
 ## Development goal
 - [Milestones](https://13.125.91.162/swmaestro/PROsentation-Frontend/-/milestones) 로 관리
 
+## Wireframe
+- [Figma 이용](https://www.figma.com/file/VMrRCqwbti0cibct0bKTbO/프로젠테이션-와이어프레임-ver.0.1?node-id=86%3A925)
+
 ## Workflow
 - 작업할 이슈를 `Doing` 칸반보드에 옮긴다.
 - `git checkout -b feature/기능이름` 으로 브렌치 생성 및 체크아웃한다.
@@ -46,7 +49,10 @@ PROsentation 프론트 개발을 위한 레포지토리 입니다.
     - `feature` -> 기능단위의 작업 브렌치 -> 로컬단에서는 `feature/기능` 으로 관리
     - `hotfix` -> 버그 수정 브렌치
 
-## Template
+## Templates
 - [Commit message Template](https://13.125.91.162/swmaestro/PROsentation-Frontend/-/wikis/Commit-message-Template)
 - [Isssue Template](https://13.125.91.162/swmaestro/PROsentation-Frontend/-/wikis/Issue-Template)
 - [Merge requests Template](https://13.125.91.162/swmaestro/PROsentation-Frontend/-/wikis/Merge-requests-Template)
+
+## Support
+- [SW마에스트로](http://swmaestro.org/user/main.do)
