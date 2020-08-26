@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import classNames from "classnames/bind";
+import React, { useEffect } from "react"
+import classNames from "classnames/bind"
 
-import style from "components/service/CamTest.scss";
+import style from "components/service/CamTest.scss"
 
-const cx = classNames.bind(style);
+const cx = classNames.bind(style)
 
 const CamTest = ({ setIsCamTest }) => {
   const constraints = (window.constraints = {
@@ -18,7 +18,7 @@ const CamTest = ({ setIsCamTest }) => {
     })
     .catch(error => {
       handleError(error)
-    });
+    })
   }, )
 
   function handleSuccess(stream) {
@@ -32,12 +32,12 @@ const CamTest = ({ setIsCamTest }) => {
   
   function handleError(error) {
     if (error.name === 'ConstraintNotSatisfiedError') {
-      const v = constraints.video
-      handleMsg(`${v.width.exact}x${v.height.exact}크기의 카메라를 지원하지 않아요 ㅠㅠ`)
+      handleMsg(`${constraints.video.width.exact}x${constraints.video.height.exact}크기의 카메라를 지원하지 않아요 ㅠㅠ`)
     } else if (error.name === 'PermissionDeniedError') {
-      handleMsg('카메라 요청을 허가해주세요!');
+      handleMsg('카메라 요청을 허가해주세요!')
+    } else {
+      handleMsg(`에러 발생!${error.name}`)
     }
-    handleMsg(`에러 발생!${error.name}`, error);
   }
 
   function handleMsg(msg) {
@@ -55,7 +55,7 @@ const CamTest = ({ setIsCamTest }) => {
     <p id="msg">카메라 테스트를 시작해주세요.</p>
     <button onClick={goNext}>다음</button>
     </div>
-  );
-};
+  )
+}
 
-export default CamTest;
+export default CamTest
