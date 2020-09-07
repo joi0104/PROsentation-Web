@@ -9,29 +9,32 @@ const RecodingVideo = () => {
   let mediaRecorder;
   let recordedBlobs;
 
+  const gumVideo = useRef();
+  const recordedVideo = useRef();
   const recordButton = useRef();
   const playButton = useRef();
   const downloadButton = useRef();
-  const recordedVideo = useRef();
-  const gumVideo = useRef();
 
-  const constraints = (window.constraints = {
-    audio: false,
+  const constraints = {
+    audio: true,
     video: true,
-  });
+  };
 
-  const onRecord = (e) => {
-    if (recordButton.current.textContent === "녹화 시작") {
+  const onRecord = () => {
+    if (recordButton.current.textContent === "Start Recording") {
+      console.log("start recoding");
       startRecording();
     } else {
+      console.log("stop recoding");
       stopRecording();
-      recordButton.current.textContent = "녹화 시작";
+      recordButton.current.textContent = "Start Recording";
       playButton.current.disabled = false;
       downloadButton.current.disabled = false;
     }
   };
 
   const onPlay = () => {
+    console.log("onPlay");
     const superBuffer = new Blob(recordedBlobs, { type: "video/webm" });
     recordedVideo.current.src = null;
     recordedVideo.current.srcObject = null;
@@ -62,7 +65,7 @@ const RecodingVideo = () => {
     }
   };
 
-  function startRecording() {
+  const startRecording = () => {
     recordedBlobs = [];
     let options = { mimeType: "video/webm;codecs=vp9,opus" };
     if (!MediaRecorder.isTypeSupported(options.mimeType)) {
@@ -82,7 +85,6 @@ const RecodingVideo = () => {
       mediaRecorder = new MediaRecorder(window.stream, options);
     } catch (e) {
       console.error("Exception while creating MediaRecorder:", e);
-      alert(`Exception while creating MediaRecorder: ${JSON.stringify(e)}`);
       return;
     }
 
@@ -92,64 +94,55 @@ const RecodingVideo = () => {
       "with options",
       options
     );
-
-    recordButton.current.textContent = "녹화 중지";
+    recordButton.current.textContent = "Stop Recording";
     playButton.current.disabled = true;
     downloadButton.current.disabled = true;
     mediaRecorder.onstop = (event) => {
       console.log("Recorder stopped: ", event);
       console.log("Recorded Blobs: ", recordedBlobs);
     };
-
     mediaRecorder.ondataavailable = handleDataAvailable;
     mediaRecorder.start();
     console.log("MediaRecorder started", mediaRecorder);
-  }
+  };
 
   const stopRecording = () => {
     mediaRecorder.stop();
   };
 
   const handleSuccess = (stream) => {
+    recordButton.current.disabled = false;
     console.log("getUserMedia() got stream:", stream);
     window.stream = stream;
     gumVideo.current.srcObject = stream;
   };
 
   useEffect(() => {
-    navigator.mediaDevices
-      .getUserMedia(constraints)
-      .then((stream) => {
+    (async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia(constraints);
         handleSuccess(stream);
-      })
-      .catch((e) => {
+      } catch (e) {
         console.error("navigator.getUserMedia error:", e);
-        alert(`navigator.getUserMedia error:${e.toString()}`);
-      });
+      }
+    })();
   });
 
   return (
     <div className={cx("RecodingVideo")}>
       <video ref={gumVideo} playsInline autoPlay></video>
+      <p>asdadas</p>
       <video ref={recordedVideo} playsInline></video>
-
       <div>
-        <button ref={recordButton} onClick={onRecord}>
+        <button ref={recordButton} onClick={onRecord} value={""}>
           Start Recording
         </button>
-        <button ref={playButton} disabled onClick={onPlay}>
+        <button ref={playButton} onClick={onPlay}>
           Play
         </button>
-        <button ref={downloadButton} disabled onClick={onDownload}>
+        <button ref={downloadButton} onClick={onDownload}>
           Download
         </button>
-      </div>
-
-      <div>
-        <h4>Media Stream Constraints options</h4>
-        <p>
-          Echo cancellation: <input type="checkbox" id="echoCancellation" />{" "}
-        </p>
       </div>
     </div>
   );
