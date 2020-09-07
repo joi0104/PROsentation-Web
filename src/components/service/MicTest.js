@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import classNames from "classnames/bind";
 
 import SoundMeter from "utils/SoundMeter.js";
@@ -8,6 +8,7 @@ const cx = classNames.bind(style);
 
 const MicTest = ({ setIsMicTest }) => {
   const [testOK, setTestOK] = useState(false);
+  const msg = useRef(null);
   const constraints = (window.constraints = {
     audio: true,
     video: false,
@@ -24,9 +25,9 @@ const MicTest = ({ setIsMicTest }) => {
       .getUserMedia(constraints)
       .then(handleSuccess)
       .catch(handleError);
-  });
+  }, []);
 
-  function handleSuccess(stream) {
+  const handleSuccess = (stream) => {
     window.stream = stream;
     const soundMeter = (window.soundMeter = new SoundMeter(
       window.audioContext
@@ -42,20 +43,19 @@ const MicTest = ({ setIsMicTest }) => {
         }
       }, 200);
     });
-  }
+  };
 
-  function handleError(error) {
-    if (error.name === "PermissionDeniedError") {
+  const handleError = (err) => {
+    if (err.name === "PermissionDeniedError") {
       handleMsg("마이크 요청을 허가해주세요!");
     } else {
-      handleMsg(`에러 발생!${error.name}`);
+      handleMsg(`에러 발생!${err.name}`);
     }
-  }
+  };
 
-  function handleMsg(msg) {
-    const msgElement = document.querySelector("#msg");
-    msgElement.innerHTML = `<p>${msg}</p>`;
-  }
+  const handleMsg = (msgStr) => {
+    msg.current.textContent = msgStr;
+  };
 
   const goNext = () => {
     if (testOK) {
@@ -67,8 +67,8 @@ const MicTest = ({ setIsMicTest }) => {
 
   return (
     <div className={cx("MicTest")}>
-      <meter high="0.2" max="0.5" value="0"></meter>
-      <p id="msg">마이크 테스트를 시작해주세요.</p>
+      <meter high="0.1" max="0.5" value="0"></meter>
+      <p ref={msg}>마이크 테스트를 시작해주세요.</p>
       <button onClick={goNext}>다음</button>
     </div>
   );

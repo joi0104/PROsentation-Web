@@ -8,9 +8,10 @@ const cx = classNames.bind(style);
 
 const PPTUpload = ({ setIsPPTUpload }) => {
   const viewer = useRef(null);
+  const msg = useRef(null);
   const [uploadOK, setUploadOK] = useState(false);
 
-  function handleUpload() {
+  const handleUpload = () => {
     WebViewer(
       {
         path: "/lib",
@@ -19,18 +20,17 @@ const PPTUpload = ({ setIsPPTUpload }) => {
       },
       viewer.current
     ).then((instance) => {
-      const input = document.getElementById("file_upload");
-      const file = input.files[0];
       try {
+        const file = document.getElementById("file_upload").files[0];
         instance.loadDocument(file, { filename: file.name });
       } catch {
         handleError(Error("다른 파일을 업로드해주세요."));
       }
       handleSuccess(instance);
     });
-  }
+  };
 
-  function handleSuccess(instance) {
+  const handleSuccess = (instance) => {
     instance.disableFeatures([
       "Measurement",
       "Annotations",
@@ -73,24 +73,23 @@ const PPTUpload = ({ setIsPPTUpload }) => {
     ]);
     setUploadOK(true);
     handleMsg("업로드 완료!");
-  }
+  };
 
-  function handleError(error) {
+  const handleError = (error) => {
     handleMsg(error.message);
-  }
+  };
 
-  function handleMsg(msg) {
-    const msgElement = document.querySelector("#msg");
-    msgElement.innerHTML = `<p>${msg}</p>`;
-  }
+  const handleMsg = (msgStr) => {
+    msg.current.textContent = msgStr;
+  };
 
-  function goNext() {
+  const goNext = () => {
     if (uploadOK) {
       setIsPPTUpload(true);
     } else {
       alert("발표자료를 업로드 해주세요!");
     }
-  }
+  };
 
   return (
     <div className={cx("PPTUpload")}>
@@ -102,7 +101,7 @@ const PPTUpload = ({ setIsPPTUpload }) => {
         onChange={handleUpload}
       />
       <div className="webviewer" ref={viewer} style={{ height: "30vh" }}></div>
-      <p id="msg">발표자료를 업로드 해주세요.</p>
+      <p ref={msg}>발표자료를 업로드 해주세요.</p>
       <button onClick={goNext}>다음</button>
     </div>
   );
