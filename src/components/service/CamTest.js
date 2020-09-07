@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 
 import style from "components/service/CamTest.scss";
+import { useRef } from "react";
 
 const cx = classNames.bind(style);
 
 const CamTest = ({ setIsCamTest }) => {
   const [testOK, setTestOK] = useState(false);
+  const video = useRef();
   const constraints = (window.constraints = {
     audio: false,
     video: true,
@@ -24,10 +26,9 @@ const CamTest = ({ setIsCamTest }) => {
   });
 
   function handleSuccess(stream) {
-    const video = document.querySelector("video");
-    video.srcObject = stream;
-    video.onloadedmetadata = function (e) {
-      video.play();
+    video.current.srcObject = stream;
+    video.current.onloadedmetadata = function (e) {
+      video.current.play();
       setTestOK(true);
       handleMsg("연결 성공!");
     };
@@ -60,7 +61,7 @@ const CamTest = ({ setIsCamTest }) => {
 
   return (
     <div className={cx("CamTest")}>
-      <video autoPlay playsInline></video>
+      <video ref={video} autoPlay playsInline></video>
       <p id="msg">카메라 테스트를 시작해주세요.</p>
       <button onClick={goNext}>다음</button>
     </div>

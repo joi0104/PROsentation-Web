@@ -67,7 +67,7 @@ const MicTest = ({ setIsMicTest }) => {
 
   return (
     <div className={cx("MicTest")}>
-      <meter high="0.2" max="0.5" value="0"></meter>
+      <meter high="0.1" max="0.5" value="0"></meter>
       <p id="msg">마이크 테스트를 시작해주세요.</p>
       <button onClick={goNext}>다음</button>
     </div>

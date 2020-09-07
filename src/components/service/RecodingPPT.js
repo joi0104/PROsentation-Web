@@ -1,14 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import WebViewer from "@pdftron/webviewer";
 import classNames from "classnames/bind";
 
-import style from "components/service/PPTUpload.scss";
+import style from "components/service/RecodingPPT.scss";
 
 const cx = classNames.bind(style);
 
-const PPTUpload = ({ setIsPPTUpload }) => {
+const RecodingPPT = () => {
   const viewer = useRef(null);
-  const [uploadOK, setUploadOK] = useState(false);
 
   function handleUpload() {
     WebViewer(
@@ -27,6 +26,10 @@ const PPTUpload = ({ setIsPPTUpload }) => {
       }
       handleSuccess(instance);
     });
+  }
+
+  function handleError(error) {
+    alert(error.message);
   }
 
   function handleSuccess(instance) {
@@ -55,7 +58,7 @@ const PPTUpload = ({ setIsPPTUpload }) => {
       "searchPanel",
       "viewControlsOverlay",
       "menuOverlay",
-      "pageNavOverlay",
+      // "pageNavOverlay",
       "toolsOverlay",
       "searchOverlay",
       "annotationPopup",
@@ -70,29 +73,9 @@ const PPTUpload = ({ setIsPPTUpload }) => {
       "errorModal",
       "passwordModal",
     ]);
-    setUploadOK(true);
-    handleMsg("업로드 완료!");
   }
-
-  function handleError(error) {
-    handleMsg(error.message);
-  }
-
-  function handleMsg(msg) {
-    const msgElement = document.querySelector("#msg");
-    msgElement.innerHTML = `<p>${msg}</p>`;
-  }
-
-  function goNext() {
-    if (uploadOK) {
-      setIsPPTUpload(true);
-    } else {
-      alert("발표자료를 업로드 해주세요!");
-    }
-  }
-
   return (
-    <div className={cx("PPTUpload")}>
+    <div className={cx("RecodingPPT")}>
       <input
         type="file"
         id="file_upload"
@@ -101,10 +84,8 @@ const PPTUpload = ({ setIsPPTUpload }) => {
         onChange={handleUpload}
       />
       <div className="webviewer" ref={viewer} style={{ height: "30vh" }}></div>
-      <p id="msg">발표자료를 업로드 해주세요.</p>
-      <button onClick={goNext}>다음</button>
     </div>
   );
 };
 
-export default PPTUpload;
+export default RecodingPPT;
