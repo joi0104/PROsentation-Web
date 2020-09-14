@@ -54,7 +54,7 @@ const MicTest = ({ setIsMicTest }) => {
   };
 
   const handleMsg = (msgStr) => {
-    msg.current.textContent = msgStr;
+    msg.current.text = msgStr;
   };
 
   const goNext = () => {
