@@ -1,15 +1,14 @@
-import React, { useRef, useState } from "react";
-import WebViewer from "@pdftron/webviewer";
-import classNames from "classnames/bind";
+import React, { useRef, useState } from "react"
+import WebViewer from "@pdftron/webviewer"
+import classNames from "classnames/bind"
 
-import style from "components/service/PPTUpload.scss";
+import style from "./PPTUpload.scss"
 
-const cx = classNames.bind(style);
+const cx = classNames.bind(style)
 
-const PPTUpload = ({ setIsPPTUpload }) => {
-  const viewer = useRef(null);
-  const msg = useRef(null);
-  const [uploadOK, setUploadOK] = useState(false);
+const PPTUpload = ({ setPPTUploadOK }) => {
+  const viewer = useRef()
+  const [uploadOK, setUploadOK] = useState(false)
 
   const handleUpload = () => {
     WebViewer(
@@ -21,14 +20,14 @@ const PPTUpload = ({ setIsPPTUpload }) => {
       viewer.current
     ).then((instance) => {
       try {
-        const file = document.getElementById("file_upload").files[0];
-        instance.loadDocument(file, { filename: file.name });
+        const file = document.getElementById("file_upload").files[0]
+        instance.loadDocument(file, { filename: file.name })
       } catch {
-        handleError(Error("다른 파일을 업로드해주세요."));
+        handleError(Error("다른 파일을 업로드해주세요."))
       }
       handleSuccess(instance);
-    });
-  };
+    })
+  }
 
   const handleSuccess = (instance) => {
     instance.disableFeatures([
@@ -49,7 +48,7 @@ const PPTUpload = ({ setIsPPTUpload }) => {
       "ThumbnailReordering",
       "PageNavigation",
       "MouseWheelZoom",
-    ]);
+    ])
     instance.disableElements([
       "header",
       "leftPanel",
@@ -70,26 +69,21 @@ const PPTUpload = ({ setIsPPTUpload }) => {
       "loadingModal",
       "errorModal",
       "passwordModal",
-    ]);
-    setUploadOK(true);
-    handleMsg("업로드 완료!");
-  };
+    ])
+    setUploadOK(true)
+  }
 
   const handleError = (error) => {
-    handleMsg(error.message);
-  };
-
-  const handleMsg = (msgStr) => {
-    msg.current.textContent = msgStr;
-  };
+    alert(error.message)
+  }
 
   const goNext = () => {
     if (uploadOK) {
-      setIsPPTUpload(true);
+      setPPTUploadOK(true)
     } else {
-      alert("발표자료를 업로드 해주세요!");
+      alert("발표자료를 업로드 해주세요!")
     }
-  };
+  }
 
   return (
     <div className={cx("PPTUpload")}>
@@ -101,10 +95,10 @@ const PPTUpload = ({ setIsPPTUpload }) => {
         onChange={handleUpload}
       />
       <div className="webviewer" ref={viewer} style={{ height: "30vh" }}></div>
-      <p ref={msg}>발표자료를 업로드 해주세요.</p>
+      <p>{uploadOK? '업로드 완료!':'업로드 필요!'}</p>
       <button onClick={goNext}>다음</button>
     </div>
-  );
-};
+  )
+}
 
-export default PPTUpload;
+export default PPTUpload
