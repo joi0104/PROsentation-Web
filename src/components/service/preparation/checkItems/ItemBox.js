@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import classNames from 'classnames/bind'
 
-import style from 'components/service/ItemBox.scss'
+import style from './ItemBox.scss'
 
 const cx = classNames.bind(style)
 
@@ -11,7 +11,7 @@ const ItemBox = ({ text, imgSrc }) => {
             <img src={imgSrc} alt={text}/>
             <p>{text}</p>
         </div>
-    );
-};
+    )
+}
 
-export default ItemBox;
+export default ItemBox

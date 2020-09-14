@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 import classNames from 'classnames/bind'
 
-import style from 'components/service/CheckItems.scss'
-import ItemBox from 'components/service/ItemBox.js'
+import style from './CheckItems.scss'
+import ItemBox from './ItemBox.js'
 
 const cx = classNames.bind(style)
 
-const CheckItems = ({ setIsCheckItems }) => {
-    const onClick = () => {
-        setIsCheckItems(true)
+const CheckItems = ({ setCheckItemsOK }) => {
+    const goNext = () => {
+        setCheckItemsOK(true)
     }
 
     return (
@@ -23,10 +23,10 @@ const CheckItems = ({ setIsCheckItems }) => {
                 <ItemBox text="마이크 확인" src="" />
             </div>
             <div id="next">
-                <button onClick={onClick}>다음</button>
+                <button onClick={goNext}>다음</button>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default CheckItems;
+export default CheckItems

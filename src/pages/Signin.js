@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import classNames from 'classnames/bind'
 
-import style from 'pages/signin/Signin.scss'
+import style from 'pages/Signin.scss'
 import SigninForm from 'components/signin/SigninForm.js'
 
 const cx = classNames.bind(style)
@@ -11,7 +11,7 @@ const Signin = ({ setHasCookie }) => {
         <div className={cx('Signin')}>
             <SigninForm setHasCookie={setHasCookie}/>
         </div>
-    );
+    )
 }
 
-export default Signin;
+export default Signin
