@@ -7,11 +7,11 @@ import SignupForm from 'components/signup/SignupForm.js'
 const cx = classNames.bind(style)
 
 const Signup = () => {
-    return (
-        <div className={ cx('Signup') }>
-            <SignupForm />
-        </div>
-    )
+  return (
+    <div className={cx('Signup')}>
+      <SignupForm />
+    </div>
+  )
 }
 
 export default Signup

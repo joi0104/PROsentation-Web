@@ -7,13 +7,13 @@ import ActiveBox from 'elements/ActiveBox.js'
 const cx = classNames.bind(style)
 
 const PreparationNavbar = ({ micTestOK, camTestOK, PPTUploadOK }) => {
-    return (
-        <div className={cx('PreparationNavbar')}>
-            <ActiveBox active={micTestOK} />
-            <ActiveBox active={camTestOK} />
-            <ActiveBox active={PPTUploadOK} />
-        </div>
-    )
+  return (
+    <div className={cx('PreparationNavbar')}>
+      <ActiveBox active={micTestOK} />
+      <ActiveBox active={camTestOK} />
+      <ActiveBox active={PPTUploadOK} />
+    </div>
+  )
 }
 
 export default PreparationNavbar

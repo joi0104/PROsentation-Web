@@ -9,23 +9,23 @@ import ProfileDropdown from 'components/navbar/ProfileDropdown.js'
 const cx = classNames.bind(style)
 
 const Profile = ({ hasCookie }) => {
-    const [ showDropdown, setShowDropdown ] = useState(false)
-    let history = useHistory()
+  const [showDropdown, setShowDropdown] = useState(false)
+  let history = useHistory()
 
-    const onClick = () => {
-        if (hasCookie) {
-            setShowDropdown(!showDropdown)
-        } else {
-            history.push("/signin");
-        }
+  const onClick = () => {
+    if (hasCookie) {
+      setShowDropdown(!showDropdown)
+    } else {
+      history.push('/signin')
     }
+  }
 
-    return (
-        <div className={cx('Profile')}>
-            <img src={profileIcon} alt='profileIcon' onClick={onClick}/>
-            {showDropdown? <ProfileDropdown /> :null}
-        </div>
-    )
+  return (
+    <div className={cx('Profile')}>
+      <img src={profileIcon} alt="profileIcon" onClick={onClick} />
+      {showDropdown ? <ProfileDropdown /> : null}
+    </div>
+  )
 }
 
 export default Profile

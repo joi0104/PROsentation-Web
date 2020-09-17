@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import classNames from 'classnames/bind'
 
 import style from 'pages/user/Premium.scss'
@@ -6,11 +6,7 @@ import style from 'pages/user/Premium.scss'
 const cx = classNames.bind(style)
 
 const Premium = () => {
-    return (
-        <div className={cx('Premium')}>
-            프리미엄 서비스
-        </div>
-    );
-};
+  return <div className={cx('Premium')}>프리미엄 서비스</div>
+}
 
-export default Premium;
+export default Premium
