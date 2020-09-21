@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import classNames from 'classnames/bind'
+import axios from 'axios'
 
 import style from './Service.scss'
 import Preparation from 'components/service/preparation/Preparation.js'
@@ -9,18 +10,33 @@ import Result from 'components/service/result/Result.js'
 const cx = classNames.bind(style)
 
 const Service = () => {
+  const [serviceId, setServiceId] = useState()
   const [preparationOK, setPreparationOK] = useState(false)
   const [recodingOK, setRecodingOK] = useState(false)
   const [resultOK, setResultOK] = useState(false)
 
+  useEffect(() => {
+    axios
+      .get('http://test-server.team-jyb.com:8080/presentation/init')
+      .then((res) => {
+        setServiceId(res.data.serviceId)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  })
+
   return (
     <div className={cx('Service')}>
       {!preparationOK ? (
-        <Preparation setPreparationOK={setPreparationOK} />
+        <Preparation
+          setPreparationOK={setPreparationOK}
+          serviceId={serviceId}
+        />
       ) : !recodingOK ? (
-        <Recoding setRecodingOK={setRecodingOK} />
+        <Recoding setRecodingOK={setRecodingOK} serviceId={serviceId} />
       ) : !resultOK ? (
-        <Result setResultOK={setResultOK} />
+        <Result setResultOK={setResultOK} serviceId={serviceId} />
       ) : (
         <>모두완료!</>
       )}
