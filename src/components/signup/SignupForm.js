@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import classNames from 'classnames/bind'
 import { useHistory } from 'react-router-dom'
-import axios from 'axios'
 
 import style from 'components/signup/SignupForm.scss'
 import Input from 'elements/Input.js'
+import { signupAPI } from 'api/http.js'
 
 const cx = classNames.bind(style)
 
@@ -18,6 +18,7 @@ const SignupForm = () => {
     phone: '',
     username: '',
   })
+
   let history = useHistory()
 
   const initForm = () => {
@@ -29,13 +30,6 @@ const SignupForm = () => {
     })
   }
 
-  const changePasswordCheck = (e) => {
-    setPasswordCheck(e.target.value)
-    if (e.target.value === form.password) {
-      setCoincideCheck(true)
-    }
-  }
-
   const changeForm = (e) => {
     setForm({
       ...form,
@@ -43,7 +37,14 @@ const SignupForm = () => {
     })
   }
 
-  const onSubmit = (e) => {
+  const changePasswordCheck = (e) => {
+    setPasswordCheck(e.target.value)
+    if (e.target.value === form.password) {
+      setCoincideCheck(true)
+    }
+  }
+
+  const onSubmit = async (e) => {
     e.preventDefault()
     if (
       !form.email ||
@@ -54,19 +55,16 @@ const SignupForm = () => {
     ) {
       return
     }
-    axios
-      .post('http://test-server.team-jyb.com:8080/user/signup', form)
-      .then((res) => {
-        alert(JSON.stringify(res.data))
-        initForm()
-        history.goBack()
-      })
-      .catch((err) => {
-        console.log(err)
-        alert('회원가입에 실패하였습니다.')
-        initForm()
-        history.goBack()
-      })
+    try {
+      await signupAPI(form)
+      alert('회원가입에 성공하였습니다.')
+      initForm()
+      history.goBack()
+    } catch {
+      alert('회원가입에 실패하였습니다.')
+      initForm()
+      history.goBack()
+    }
   }
 
   return (
