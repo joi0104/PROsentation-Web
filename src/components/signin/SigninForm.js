@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import classNames from 'classnames/bind'
 import { useHistory, Link } from 'react-router-dom'
-import axios from 'axios'
 
 import styles from 'components/signin/SigninForm.scss'
 import Input from 'elements/Input.js'
+import { signinAPI } from 'api/http.js'
 
 const cx = classNames.bind(styles)
 
@@ -29,25 +29,22 @@ const SigninForm = ({ setHasCookie }) => {
     })
   }
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
     if (!form.email || !form.password) {
       return
     }
-    axios
-      .post('http://test-server.team-jyb.com:8080/user/signin', form)
-      .then((res) => {
-        alert(JSON.stringify(res.data))
-        initForm()
-        history.goBack()
-        setHasCookie(true)
-      })
-      .catch((err) => {
-        console.log(err)
-        alert('로그인에 실패하였습니다.')
-        initForm()
-        history.goBack()
-      })
+    try {
+      let res = await signinAPI(form)
+      alert(JSON.stringify(res.data))
+      setHasCookie(true)
+      initForm()
+      history.goBack()
+    } catch {
+      alert('로그인에 실패하였습니다.')
+      initForm()
+      history.goBack()
+    }
   }
 
   return (
