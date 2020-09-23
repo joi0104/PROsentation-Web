@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import classNames from 'classnames/bind'
-import axios from 'axios'
 
 import style from './Service.scss'
 import Preparation from 'components/service/preparation/Preparation.js'
 import Recoding from 'components/service/recoding/Recoding.js'
 import Result from 'components/service/result/Result.js'
+import { init } from 'api/http.js'
 
 const cx = classNames.bind(style)
 
@@ -16,15 +16,16 @@ const Service = () => {
   const [resultOK, setResultOK] = useState(false)
 
   useEffect(() => {
-    axios
-      .get('http://test-server.team-jyb.com:8080/presentation/init')
-      .then((res) => {
+    ;(async () => {
+      try {
+        let res = await init()
         setServiceId(res.data.serviceId)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  })
+        alert(res.data.serviceId)
+      } catch {
+        console.log('실패!')
+      }
+    })()
+  }, [])
 
   return (
     <div className={cx('Service')}>

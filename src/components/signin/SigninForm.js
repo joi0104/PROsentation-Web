@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import classNames from 'classnames/bind'
 import { useHistory, Link } from 'react-router-dom'
+import axios from 'axios'
 
 import styles from 'components/signin/SigninForm.scss'
 import Input from 'elements/Input.js'
@@ -36,7 +37,8 @@ const SigninForm = ({ setHasCookie }) => {
     }
     try {
       let res = await signinAPI(form)
-      alert(JSON.stringify(res.data))
+      axios.defaults.headers.common['X-AUTH-TOKEN'] = res.data.token
+      alert('로그인에 성공하였습니다.')
       setHasCookie(true)
       initForm()
       history.goBack()
