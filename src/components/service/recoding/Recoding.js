@@ -6,7 +6,7 @@ import RecodingVideo from 'components/service/recoding/RecodingVideo.js'
 
 const cx = classNames.bind(style)
 
-const Recoding = ({ setRecodingOK }) => {
+const Recoding = ({ setRecodingOK, serviceId }) => {
   const goNext = () => {
     setRecodingOK(true)
   }
