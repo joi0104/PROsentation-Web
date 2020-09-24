@@ -1,18 +1,36 @@
 import React from 'react'
 import classNames from 'classnames/bind'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 import style from 'pages/Main.scss'
+import PremiumNavbar from 'components/navbar/PremiumNavbar.js'
+import iconArrow from 'assets/icons/icon-arrow.png'
 
 const cx = classNames.bind(style)
 
 const Main = ({ hasCookie }) => {
+  let history = useHistory()
+
+  const onClick = () => {
+    history.push(hasCookie ? '/service' : '/signin')
+  }
   return (
     <div className={cx('Main')}>
-      <h2>나만을 위한 발표 솔루션, PROSENTATION</h2>
-      <p>성공적으로 발표하고 싶을 때는 PROSENTATION</p>
-      <p>발표 동영상을 업로드하면 전문 AI가 분석하여 피드백 해줄께요.</p>
-      <Link to={hasCookie ? '/service' : '/signin'}>발표 시작하기</Link>
+      <PremiumNavbar />
+      <p className={cx('Main-title')}>나만을 위한 발표 솔루션, PROSENTATION</p>
+      <p className={cx('Main-description')}>
+        프로처럼 멋지게 발표하고 싶을 때는 프로젠테이션!
+      </p>
+      <p className={cx('Main-description')}>
+        발표 동영상을 업로드하면 AI가 체계적으로 분석하여 피드백해드려요.
+      </p>
+      <p className={cx('Main-button-decsription')}>
+        학생이라면? AI에게 무료로 발표 코칭 받기
+      </p>
+      <div className={cx('Main-button')} onClick={onClick}>
+        발표 시작하기
+        <img src={iconArrow} alt="icon-arrow" />
+      </div>
     </div>
   )
 }
