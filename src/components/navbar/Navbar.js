@@ -3,13 +3,14 @@ import classNames from 'classnames/bind'
 
 import styles from 'components/navbar/Navbar.scss'
 import Profile from 'components/navbar/Profile.js'
+import logoIcon from 'assets/images/logo.png'
 
 const cx = classNames.bind(styles)
 
 const Navbar = ({ hasCookie }) => {
   return (
     <div className={cx('Navbar')}>
-      <h1>PROsentation</h1>
+      <img className={cx('Navbar-logo')} src={logoIcon} alt="logo" />
       <Profile hasCookie={hasCookie} />
     </div>
   )
