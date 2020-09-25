@@ -58,7 +58,7 @@ const MicTest = ({ setMicTestOK }) => {
 
   return (
     <div className={cx('MicTest')}>
-      <meter high="0.1" max="0.5" value="0"></meter>
+      <meter high="0.05" max="0.5" value="0"></meter>
       <p>{testOK ? '연결완료!' : '연결필요!'}</p>
       <button onClick={goNext}>다음</button>
     </div>
