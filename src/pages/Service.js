@@ -14,6 +14,7 @@ const Service = () => {
   const [preparationOK, setPreparationOK] = useState(false)
   const [recodingOK, setRecodingOK] = useState(false)
   const [resultOK, setResultOK] = useState(false)
+  const [PPT, setPPT] = useState()
 
   useEffect(() => {
     ;(async () => {
@@ -33,9 +34,14 @@ const Service = () => {
         <Preparation
           setPreparationOK={setPreparationOK}
           serviceId={serviceId}
+          setPPT={setPPT}
         />
       ) : !recodingOK ? (
-        <Recoding setRecodingOK={setRecodingOK} serviceId={serviceId} />
+        <Recoding
+          setRecodingOK={setRecodingOK}
+          serviceId={serviceId}
+          PPT={PPT}
+        />
       ) : !resultOK ? (
         <Result setResultOK={setResultOK} serviceId={serviceId} />
       ) : (

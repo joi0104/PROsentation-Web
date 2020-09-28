@@ -6,19 +6,19 @@ import { uploadPPTAPI } from 'api/http.js'
 
 const cx = classNames.bind(style)
 
-const PPTUpload = ({ setPPTUploadOK }) => {
-  const fileForm = useRef()
+const PPTUpload = ({ setPPTUploadOK, setPPT }) => {
+  const ppt = useRef()
   const [uploadOK, setUploadOK] = useState(false)
 
   const handleUpload = async () => {
     try {
       const form = new FormData()
-      const file = fileForm.current.files[0]
-      form.append('ppt', file)
+      form.append('ppt', ppt.current.files[0])
       await uploadPPTAPI(form)
+      setPPT(ppt.current.files[0])
       handleSuccess()
-    } catch {
-      handleError()
+    } catch (err) {
+      handleError(err)
     }
   }
 
@@ -26,8 +26,8 @@ const PPTUpload = ({ setPPTUploadOK }) => {
     setUploadOK(true)
   }
 
-  const handleError = () => {
-    alert('에러')
+  const handleError = (err) => {
+    console.log(err)
   }
 
   const goNext = () => {
@@ -40,7 +40,7 @@ const PPTUpload = ({ setPPTUploadOK }) => {
 
   return (
     <div className={cx('PPTUpload')}>
-      <input type="file" ref={fileForm} accept=".pdf" onChange={handleUpload} />
+      <input type="file" ref={ppt} accept=".pdf" onChange={handleUpload} />
       <p>{uploadOK ? '업로드 완료!' : '업로드 필요!'}</p>
       <button onClick={goNext}>다음</button>
     </div>

@@ -11,7 +11,7 @@ import CompletePreparation from 'components/service/preparation/completePreparat
 
 const cx = classNames.bind(style)
 
-const Preparation = ({ setPreparationOK, serviceId }) => {
+const Preparation = ({ setPreparationOK, serviceId, setPPT }) => {
   const [checkItemsOK, setCheckItemsOK] = useState(false)
   const [micTestOK, setMicTestOK] = useState(false)
   const [camTestOK, setCamTestOK] = useState(false)
@@ -33,7 +33,7 @@ const Preparation = ({ setPreparationOK, serviceId }) => {
         ) : !camTestOK ? (
           <CamTest setCamTestOK={setCamTestOK} />
         ) : !PPTUploadOK ? (
-          <PPTUpload setPPTUploadOK={setPPTUploadOK} />
+          <PPTUpload setPPTUploadOK={setPPTUploadOK} setPPT={setPPT} />
         ) : (
           <CompletePreparation setPreparationOK={setPreparationOK} />
         )}
