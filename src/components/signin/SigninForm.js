@@ -6,7 +6,6 @@ import axios from 'axios'
 import styles from 'components/signin/SigninForm.scss'
 import Input from 'elements/Input.js'
 import { signinAPI } from 'api/http.js'
-import Button1 from 'elements/Button1.js'
 
 const cx = classNames.bind(styles)
 
@@ -50,7 +49,7 @@ const SigninForm = ({ setHasCookie }) => {
   }
 
   return (
-    <div className={cx('SigninForm')} onSubmit={onSubmit}>
+    <form className={cx('SigninForm')} onSubmit={onSubmit}>
       <Input
         label="이메일"
         type="email"
@@ -68,8 +67,8 @@ const SigninForm = ({ setHasCookie }) => {
       <p className={cx('SigninForm-msg')} ref={msgRef}>
         이메일 또는 비밀번호가 올바르지 않습니다.
       </p>
-      <Button1 title="로그인" onClick={onSubmit} />
-    </div>
+      <button type="submit">로그인</button>
+    </form>
   )
 }
 

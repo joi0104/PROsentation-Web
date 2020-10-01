@@ -1,6 +1,24 @@
 .Signup {
+    width: 100%;
+    height: 92%;
+    background-color: rgba(0, 204, 204, 0.05);
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    padding-top: 20%;
+    .Signup-wrapper {
+        width: 482px;
+        height: 700px;
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    } 
+    .Banner {
+        margin-bottom: 30px;
+    }
+    .FindLink {
+        margin: 5px 0;
+    }
 }

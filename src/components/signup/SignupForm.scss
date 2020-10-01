@@ -1,2 +1,25 @@
 .SignupForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .button {
+        width: 320px;
+        height: 45px;
+        border-radius: 100px;
+        background-color: #00cccc;
+        font-family: NanumSquare;
+        font-size: 18px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0;
+        margin-top: 10px;
+    }
 }

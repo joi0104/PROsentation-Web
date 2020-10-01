@@ -9,7 +9,6 @@ import { signupAPI } from 'api/http.js'
 const cx = classNames.bind(style)
 
 const SignupForm = () => {
-  const [passwordCheck, setPasswordCheck] = useState('')
   const [coincideCheck, setCoincideCheck] = useState(false)
 
   const [form, setForm] = useState({
@@ -38,7 +37,6 @@ const SignupForm = () => {
   }
 
   const changePasswordCheck = (e) => {
-    setPasswordCheck(e.target.value)
     if (e.target.value === form.password) {
       setCoincideCheck(true)
     }
@@ -57,52 +55,48 @@ const SignupForm = () => {
     }
     try {
       await signupAPI(form)
-      alert('회원가입에 성공하였습니다.')
       initForm()
       history.goBack()
     } catch {
       alert('회원가입에 실패하였습니다.')
-      initForm()
-      history.goBack()
     }
   }
 
   return (
     <form className={cx('SigninForm')} onSubmit={onSubmit}>
       <Input
+        label={'이메일'}
         type={'email'}
         name={'email'}
         value={form.email}
         changeForm={changeForm}
       />
       <Input
+        label={'비밀번호'}
         type={'password'}
         name={'password'}
         value={form.password}
         changeForm={changeForm}
       />
       <Input
+        label={'비밀번호 확인'}
         type={'password'}
         name={'passwordCheck'}
-        value={passwordCheck}
-        onChange={changePasswordCheck}
+        changeForm={changePasswordCheck}
       />
-      {coincideCheck ? (
-        <p>비밀번호가 일치합니다</p>
-      ) : (
-        <p>비밀번호가 일치하지 않습니다.</p>
-      )}
       <Input
+        label={'닉네임'}
         type={'text'}
         name={'username'}
         value={form.username}
-        onChange={changeForm}
+        changeForm={changeForm}
       />
       <Input
-        type={'text'}
+        label={'휴대폰 번호'}
+        type={'tel'}
         name={'phone'}
         value={form.phone}
-        onChange={changeForm}
+        changeForm={changeForm}
       />
       <button type="submit">회원가입</button>
     </form>
