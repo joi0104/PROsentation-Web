@@ -1,8 +1,32 @@
 .Input {
-    * {
-        display: inline;
-    }
+    display: flex;
+    flex-direction: column;
     label {
-        margin-right: 5%;
+        font-family: NanumSquare;
+        font-size: 14px;
+        line-height: 20px;
+        color: #000000;
+        margin: 0 0 5px 0;
     }
+    input {
+        width: 300px;
+        height: 35px;
+        border-radius: 3px;
+    }
+
+    input:valid {
+        border: solid 1px #00cccc;   
+    }
+
+    input:invalid {
+        border: solid 1px #fa6462;
+    }
+
+    p {
+        margin: 2px 0;
+        color: #fa6462;
+        font-size: 12px;
+    }
+
 }
+

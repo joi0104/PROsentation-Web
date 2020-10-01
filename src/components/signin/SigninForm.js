@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import classNames from 'classnames/bind'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
 import styles from 'components/signin/SigninForm.scss'
 import Input from 'elements/Input.js'
 import { signinAPI } from 'api/http.js'
+import Button1 from 'elements/Button1.js'
 
 const cx = classNames.bind(styles)
 
@@ -50,22 +51,23 @@ const SigninForm = ({ setHasCookie }) => {
   }
 
   return (
-    <form className={cx('SigninForm')} onSubmit={onSubmit}>
+    <div className={cx('SigninForm')} onSubmit={onSubmit}>
       <Input
-        type={'text'}
-        name={'email'}
+        label="이메일"
+        type="email"
+        name="email"
         value={form.email}
-        onChange={changeForm}
+        changeForm={changeForm}
       />
       <Input
-        type={'password'}
-        name={'password'}
+        label="비밀번호"
+        type="password"
+        name="password"
         value={form.password}
-        onChange={changeForm}
+        changeForm={changeForm}
       />
-      <button type="submit">로그인</button>
-      <Link to="/signup">회원가입</Link>
-    </form>
+      <Button1 title="로그인" onClick={onSubmit} />
+    </div>
   )
 }
 

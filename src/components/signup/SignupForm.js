@@ -73,13 +73,13 @@ const SignupForm = () => {
         type={'email'}
         name={'email'}
         value={form.email}
-        onChange={changeForm}
+        changeForm={changeForm}
       />
       <Input
         type={'password'}
         name={'password'}
         value={form.password}
-        onChange={changeForm}
+        changeForm={changeForm}
       />
       <Input
         type={'password'}

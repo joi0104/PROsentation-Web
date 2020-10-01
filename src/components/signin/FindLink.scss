@@ -1,0 +1,11 @@
+.FindLink {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 35%;
+    p { 
+        font-family: NanumSquare;
+        font-size: 14px;
+        color: #808083;
+    }
+}
