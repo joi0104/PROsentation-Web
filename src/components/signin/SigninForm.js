@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import classNames from 'classnames/bind'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
@@ -15,6 +15,7 @@ const SigninForm = ({ setHasCookie }) => {
     email: '',
     password: '',
   })
+  const msgRef = useRef()
   let history = useHistory()
 
   const initForm = () => {
@@ -39,14 +40,12 @@ const SigninForm = ({ setHasCookie }) => {
     try {
       let res = await signinAPI(form)
       axios.defaults.headers.common['X-AUTH-TOKEN'] = res.data.token
-      alert('로그인에 성공하였습니다.')
+      msgRef.current.style.visibility = 'hidden'
       setHasCookie(true)
       initForm()
       history.goBack()
     } catch {
-      alert('로그인에 실패하였습니다.')
-      initForm()
-      history.goBack()
+      msgRef.current.style.visibility = 'visible'
     }
   }
 
@@ -66,6 +65,9 @@ const SigninForm = ({ setHasCookie }) => {
         value={form.password}
         changeForm={changeForm}
       />
+      <p className={cx('SigninForm-msg')} ref={msgRef}>
+        이메일 또는 비밀번호가 올바르지 않습니다.
+      </p>
       <Button1 title="로그인" onClick={onSubmit} />
     </div>
   )
