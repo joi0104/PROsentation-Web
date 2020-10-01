@@ -7,11 +7,11 @@ import logoIcon from 'assets/images/logo.png'
 
 const cx = classNames.bind(styles)
 
-const Navbar = ({ hasCookie }) => {
+const Navbar = ({ hasCookie, setHasCookie }) => {
   return (
     <div className={cx('Navbar')}>
       <img className={cx('Navbar-logo')} src={logoIcon} alt="logo" />
-      <Profile hasCookie={hasCookie} />
+      <Profile hasCookie={hasCookie} setHasCookie={setHasCookie} />
     </div>
   )
 }
