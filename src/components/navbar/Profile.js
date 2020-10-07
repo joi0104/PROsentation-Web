@@ -8,7 +8,7 @@ import ProfileDropdown from 'components/navbar/ProfileDropdown.js'
 
 const cx = classNames.bind(style)
 
-const Profile = ({ hasCookie }) => {
+const Profile = ({ hasCookie, setHasCookie }) => {
   const [showDropdown, setShowDropdown] = useState(false)
   let history = useHistory()
 
@@ -23,7 +23,12 @@ const Profile = ({ hasCookie }) => {
   return (
     <div className={cx('Profile')}>
       <img src={profileIcon} alt="profileIcon" onClick={onClick} />
-      {showDropdown ? <ProfileDropdown /> : null}
+      {showDropdown ? (
+        <ProfileDropdown
+          setShowDropdown={setShowDropdown}
+          setHasCookie={setHasCookie}
+        />
+      ) : null}
     </div>
   )
 }

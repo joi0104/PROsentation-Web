@@ -1,4 +1,60 @@
 .ProfileDropdown {
+    width: 250px;
+    height: 450px;
+    box-shadow: 0 0 4px 0 rgba(179, 179, 181, 0.3);
+    background-color: #ffffff;
     position: absolute;
     right: 0;
+    display: flex;
+    flex-direction: column;
+    .jumbotron {
+        height: 40%;
+        background-color: #f3f3f9;
+        display: flex;
+        flex-direction: column;
+        img[alt="icon-delete"] {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            align-self: flex-end;
+            margin: 16px 16px 0 0;
+        }
+        img[alt="icon-user"] {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            margin: 10px 0 0 45px;
+        }
+        .title {
+            width: 105px;
+            height: 20px;
+            font-family: NanumSquare;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0 10px 45px;
+        }
+        .email {
+            width: 208px;
+            height: 20px;
+            font-family: NanumSquare;
+            font-size: 16px;
+            color: #808083;
+            margin: 0 0 0 45px;
+        }
+    }
+    .list {
+        padding-top: 10px;
+        p {
+            width: 150px;
+            height: 34px;
+            font-family: NanumSquare;
+            font-size: 16px;
+            color: #000000;
+            margin-left: 45px;
+            margin-bottom: 24px;
+        }
+        .logout {
+            color: #808083;
+        }
+    }
 }

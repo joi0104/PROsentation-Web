@@ -13,11 +13,11 @@ import User from 'pages/user/User.js'
 const cx = classNames.bind(style)
 
 const App = () => {
-  const [hasCookie, setHasCookie] = useState(false)
+  const [hasCookie, setHasCookie] = useState(true)
 
   return (
     <div className={cx('App')}>
-      <Navbar hasCookie={hasCookie} />
+      <Navbar hasCookie={hasCookie} setHasCookie={setHasCookie} />
       <Route exact path="/" component={() => <Main hasCookie={hasCookie} />} />
       <Route
         exact

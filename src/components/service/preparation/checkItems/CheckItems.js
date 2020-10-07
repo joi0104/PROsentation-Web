@@ -2,28 +2,49 @@ import React from 'react'
 import classNames from 'classnames/bind'
 
 import style from './CheckItems.scss'
-import ItemBox from './ItemBox.js'
+import iconCheckroundInactive from 'assets/icons/icon-checkround.png'
+import iconCheckroundActive from 'assets/icons/icon-checkround-green.png'
+import iconPPTadd from 'assets/icons/icon-pptadd-green.png'
+import iconMic from 'assets/icons/icon-mic-green.png'
+import iconCam from 'assets/icons/icon-cam-green.png'
 
 const cx = classNames.bind(style)
 
-const CheckItems = ({ setCheckItemsOK }) => {
-  const goNext = () => {
-    setCheckItemsOK(true)
-  }
-
+const CheckItems = ({ PPTuploadOK, micTestOK, camTestOK }) => {
   return (
     <div className={cx('CheckItems')}>
-      <div id="notice">
-        <p>이제 웹캠과 미아크 연결 상태를 확인해볼게요.</p>
-        <p>먼저, 연결 상태를 확인하기 위해 웹캠과 마이크를 준비해주세요.</p>
+      <div className={cx('PPTupload')}>
+        {PPTuploadOK ? (
+          <img src={iconCheckroundActive} alt="active" />
+        ) : (
+          <img src={iconCheckroundInactive} alt="inactive" />
+        )}
+        <div>
+          <img src={iconPPTadd} alt="pptadd" />
+        </div>
+        <p>발표자료 업로드</p>
       </div>
-      <div id="itemBoxs">
-        <ItemBox text="발표자료 업로드" src="" />
-        <ItemBox text="웹캠 확인" src="" />
-        <ItemBox text="마이크 확인" src="" />
+      <div className={cx('micTest')}>
+        {micTestOK ? (
+          <img src={iconCheckroundActive} alt="active" />
+        ) : (
+          <img src={iconCheckroundInactive} alt="inactive" />
+        )}
+        <div>
+          <img src={iconMic} alt="mic" />
+        </div>
+        <p>마이크 연결</p>
       </div>
-      <div id="next">
-        <button onClick={goNext}>다음</button>
+      <div className={cx('camTest')}>
+        {camTestOK ? (
+          <img src={iconCheckroundActive} alt="active" />
+        ) : (
+          <img src={iconCheckroundInactive} alt="inactive" />
+        )}
+        <div>
+          <img src={iconCam} alt="cam" />
+        </div>
+        <p>웹캠 연결</p>
       </div>
     </div>
   )

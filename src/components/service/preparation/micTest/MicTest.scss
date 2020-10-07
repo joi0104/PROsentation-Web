@@ -1,10 +1,58 @@
 .MicTest {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     meter {
-        width: 80%;
+        width: 70%;
+        height: 50px;
     }
-    * {
-        margin: 10px auto;
+
+    meter::-webkit-meter-bar {
+        background: #f8f8f8;
+        border-radius: 0;
+    }
+
+    meter::-webkit-meter-suboptimum-value {
+        background: lightgray;
+    }
+    
+    meter::-webkit-meter-optimum-value {
+        background: #00cccc;
+    }
+
+    .description {
+        margin: 5px 0;
+    }
+
+    .button {
+        width: 320px;
+        height: 45px;
+        border-radius: 100px;
+        background-color: #00cccc;
+        font-family: NanumSquare;
+        font-size: 18px;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0;
+        margin-top: 30px;
+
+    }
+
+    .script {
+        width: 587px;
+        height: 50px;
+        border-radius: 8px;
+        background-color: #f0fcfc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 5%;
+    }
+    .state {
+        margin-bottom: 5%;
     }
 }

@@ -1,8 +1,25 @@
 .Input {
-    * {
-        display: inline;
-    }
+    display: flex;
+    flex-direction: column;
     label {
-        margin-right: 5%;
+        font-family: NanumSquare;
+        font-size: 14px;
+        line-height: 20px;
+        color: #000000;
+        margin: 0 0 3px 0;
     }
+    input {
+        width: 300px;
+        height: 35px;
+        border-radius: 3px;
+        border: solid 1px #b3b3b5;
+    }
+    p {
+        margin: 2px 0;
+        color: #fa6462;
+        font-size: 12px;
+        visibility: hidden;
+    }
+
 }
+

@@ -58,9 +58,19 @@ const MicTest = ({ setMicTestOK }) => {
 
   return (
     <div className={cx('MicTest')}>
-      <meter high="0.05" max="0.5" value="0"></meter>
-      <p>{testOK ? '연결완료!' : '연결필요!'}</p>
-      <button onClick={goNext}>다음</button>
+      <p className={cx('description')}>
+        가이드 선 안에 얼굴을 위치 시키고 체크시작 버튼을 누르면 타이머가
+        나옵니다.
+      </p>
+      <p className={cx('description')}>
+        5초의 타이머가 나오는 동시에 아래 문장으로 소리 내어 읽어주세요.
+      </p>
+      <p className={cx('script')}>안녕하세요, 만나서 반갑습니다!</p>
+      <meter high="0.1" max="0.5" value="0"></meter>
+      <p className={cx('state')}>{testOK ? '연결완료!' : '연결필요!'}</p>
+      <button className={cx('button')} onClick={goNext}>
+        다음
+      </button>
     </div>
   )
 }
