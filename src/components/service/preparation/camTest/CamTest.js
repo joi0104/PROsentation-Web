@@ -2,42 +2,49 @@ import React, { useEffect, useState, useRef } from 'react'
 import classNames from 'classnames/bind'
 
 import style from './CamTest.scss'
+import Description from 'elements/Description.js'
+import State from 'elements/State.js'
+import iconNoCam from 'assets/icons/icon-no-cam.png'
 
 const cx = classNames.bind(style)
 
 const CamTest = ({ setCamTestOK }) => {
   const [testOK, setTestOK] = useState(false)
   const video = useRef()
+  const nextButton = useRef()
   const constraints = (window.constraints = {
-    audio: false,
-    video: true,
+    video: {
+      width: { ideal: 540 },
+      height: { ideal: 300 },
+    },
   })
 
   useEffect(() => {
-    navigator.mediaDevices
-      .getUserMedia(constraints)
-      .then((stream) => handleSuccess(stream))
-      .catch((err) => handleError(err))
+    ;(async () => {
+      try {
+        let stream = await navigator.mediaDevices.getUserMedia(constraints)
+        testedUI(stream)
+      } catch (err) {
+        handleError(err)
+      }
+    })()
   })
 
-  const handleSuccess = (stream) => {
+  const testedUI = (stream) => {
     video.current.srcObject = stream
     video.current.onloadedmetadata = (e) => {
       video.current.play()
-      setTestOK(true)
+      nextButton.current.style.backgroundColor = '#00cccc'
+      handleSuccess()
     }
   }
 
+  const handleSuccess = () => {
+    setTestOK(true)
+  }
+
   const handleError = (err) => {
-    if (err.name === 'ConstraintNotSatisfiedError') {
-      alert(
-        `${constraints.video.width.exact}x${constraints.video.height.exact}크기의 카메라를 지원하지 않아요 ㅠㅠ`
-      )
-    } else if (err.name === 'PermissionDeniedError') {
-      alert('카메라 요청을 허가해주세요!')
-    } else {
-      alert(`에러 발생!${err.name}`)
-    }
+    console.log(err)
   }
 
   const goNext = () => {
@@ -50,16 +57,16 @@ const CamTest = ({ setCamTestOK }) => {
 
   return (
     <div className={cx('CamTest')}>
-      <p className={cx('description')}>
+      <Description>
         가이드 선 안에 얼굴을 위치 시키고 체크시작 버튼을 누르면 타이머가
-        나옵니다.
-      </p>
-      <p className={cx('description')}>
-        5초의 타이머가 나오는 동시에 아래 문장으로 소리 내어 읽어주세요.
-      </p>
-      <video ref={video} autoPlay playsInline></video>
-      <p className={cx('state')}>{testOK ? '연결완료!' : '연결필요!'}</p>
-      <button className={cx('button')} onClick={goNext}>
+        나옵니다.5초의 타이머가 나오는 동시에 아래 문장으로 소리 내어
+        읽어주세요.
+      </Description>
+      <div className={cx('content-wrapper')}>
+        <video ref={video} autoPlay playsInline></video>
+        <State testOK={testOK} />
+      </div>
+      <button className={cx('button')} ref={nextButton} onClick={goNext}>
         다음
       </button>
     </div>

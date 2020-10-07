@@ -10,11 +10,11 @@ import iconCam from 'assets/icons/icon-cam-green.png'
 
 const cx = classNames.bind(style)
 
-const CheckItems = ({ PPTuploadOK, micTestOK, camTestOK }) => {
+const CheckItems = ({ PPTUploadOK, micTestOK, camTestOK }) => {
   return (
     <div className={cx('CheckItems')}>
       <div className={cx('PPTupload')}>
-        {PPTuploadOK ? (
+        {PPTUploadOK ? (
           <img src={iconCheckroundActive} alt="active" />
         ) : (
           <img src={iconCheckroundInactive} alt="inactive" />
