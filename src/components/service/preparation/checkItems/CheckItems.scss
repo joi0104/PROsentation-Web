@@ -1,13 +1,50 @@
 .CheckItems {
-    height: 90%;
-    #notice, #next{
-        height: 15%;
-        display: block;
-        text-align: center;
-        margin: 3% 0;
-    }
-    #itemBoxs{
-        display: block;
-        height: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 10px;
+    div {
+        width: 280px;
+        height: 288px;
+        border-radius: 3px;
+        border: solid 1px #c7c7c8;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            align-self: flex-end;
+            padding-right: 10px;
+        }
+        div  {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(0, 204, 204, 0.15);
+            border-radius: 50%;
+            border: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 24px;
+                height: 24px;
+                object-fit: contain;
+                align-self: center;
+                padding: 0;
+            }
+        }
+        p {
+            width: 95px;
+            height: 50px;
+            font-family: NanumSquare;
+            font-size: 18px;
+            color: #808083;
+            word-break: keep-all;
+            text-align: center;
+        }
     }
 }

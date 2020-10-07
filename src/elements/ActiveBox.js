@@ -1,16 +1,19 @@
 import React from 'react'
+import classNames from 'classnames/bind'
 
-const style = {
-  width: '20px',
-  height: '20px',
-  borderRadius: '20%',
-  backgroundColor: 'lightgray',
-  margin: '5px',
-}
+import style from './ActiveBox.scss'
 
-const ActiveBox = ({ active }) => {
+const cx = classNames.bind(style)
+
+const ActiveBox = ({ active, activeImg, inactiveImg }) => {
   return (
-    <div style={active ? { ...style, backgroundColor: 'red' } : style}></div>
+    <div className={cx('ActiveBox')}>
+      {active ? (
+        <img src={activeImg} alt="active" />
+      ) : (
+        <img src={inactiveImg} alt="inactive" />
+      )}
+    </div>
   )
 }
 
