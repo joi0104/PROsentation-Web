@@ -7,3 +7,10 @@ export const signupAPI = (form) => axios.post('/user/signup', form)
 export const signinAPI = (form) => axios.post('/user/signin', form)
 
 export const init = () => axios.get('/presentation/init')
+
+export const uploadPPTAPI = (form) =>
+  axios.post('/presentation/ppt', form, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  })
