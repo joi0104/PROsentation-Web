@@ -13,7 +13,7 @@ import User from 'pages/user/User.js'
 const cx = classNames.bind(style)
 
 const App = () => {
-  const [hasCookie, setHasCookie] = useState(true)
+  const [hasCookie, setHasCookie] = useState(false)
 
   return (
     <div className={cx('App')}>

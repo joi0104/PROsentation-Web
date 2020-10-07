@@ -2,6 +2,8 @@ import React from 'react'
 import classNames from 'classnames/bind'
 
 import style from './CompletePreparation.scss'
+import CheckItems from 'components/service/preparation/checkItems/CheckItems.js'
+import Description from 'elements/Description.js'
 
 const cx = classNames.bind(style)
 
@@ -12,9 +14,14 @@ const CompletePreparation = ({ setPreparationOK }) => {
 
   return (
     <div className={cx('CompletePreparation')}>
-      <p>모든 준비가 완료되었습니다!</p>
-      <p>발표 촬영을 시작할까요?</p>
-      <button onClick={goNext}>시작</button>
+      <Description>
+        좋아요! 이제 모든 준비가 끝났어요. ‘발표 영상 촬영하기’ 버튼을 눌러
+        본격적으로 발표를 촬영해보세요!
+      </Description>
+      <CheckItems PPTUploadOK={true} micTestOK={true} camTestOK={true} />
+      <button className={cx('button')} type="button" onClick={goNext}>
+        발표영상 촬영하기
+      </button>
     </div>
   )
 }

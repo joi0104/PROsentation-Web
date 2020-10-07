@@ -1,8 +1,58 @@
 .PPTUpload {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 
-    * {
-        margin: 5px auto;
+
+    .button {
+        width: 320px;
+        height: 45px;
+        border-radius: 100px;
+        background-color: #f8f8f8;
+        font-family: NanumSquare;
+        font-size: 18px;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0;
+    }
+
+    .input-wrapper {
+        width: 100%;
+        height: 60%;
+        border-radius: 3px;
+        border: solid 1px #eeeeef;
+        background-color: #f0fcfc;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        img {
+            width: 64px;
+            height: 64px;
+        }
+        label { 
+            margin-top: 10px;
+            width: 234px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            border-radius: 100px;
+            background-color: #00cccc;
+            font-family: NanumSquare;
+        } 
+        input[type="file"] { 
+            display: none;
+        }
+        .input-description {
+            font-family: NanumSquare;
+            font-size: 15px;
+        }
     }
 }

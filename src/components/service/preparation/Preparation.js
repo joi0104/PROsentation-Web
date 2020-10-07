@@ -36,7 +36,11 @@ const Preparation = ({ setPreparationOK, serviceId, setPPT }) => {
           ) : !camTestOK ? (
             <CamTest setCamTestOK={setCamTestOK} />
           ) : !PPTUploadOK ? (
-            <PPTUpload setPPTUploadOK={setPPTUploadOK} />
+            <PPTUpload
+              setPPTUploadOK={setPPTUploadOK}
+              setPPT={setPPT}
+              serviceId={serviceId}
+            />
           ) : (
             <CompletePreparation setPreparationOK={setPreparationOK} />
           )}
