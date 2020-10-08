@@ -3,7 +3,7 @@ import classNames from 'classnames/bind'
 
 import style from './Service.scss'
 import Preparation from 'components/service/preparation/Preparation.js'
-import Recoding from 'components/service/recoding/Recoding.js'
+import Recording from 'components/service/recording/Recording.js'
 import Result from 'components/service/result/Result.js'
 import { init } from 'api/http.js'
 
@@ -12,7 +12,7 @@ const cx = classNames.bind(style)
 const Service = () => {
   const [serviceId, setServiceId] = useState()
   const [preparationOK, setPreparationOK] = useState(false)
-  const [recodingOK, setRecodingOK] = useState(false)
+  const [recordingOK, setRecordingOK] = useState(false)
   const [resultOK, setResultOK] = useState(false)
   const [PPT, setPPT] = useState()
 
@@ -36,9 +36,9 @@ const Service = () => {
           serviceId={serviceId}
           setPPT={setPPT}
         />
-      ) : !recodingOK ? (
-        <Recoding
-          setRecodingOK={setRecodingOK}
+      ) : !recordingOK ? (
+        <Recording
+          setRecodingOK={setRecordingOK}
           serviceId={serviceId}
           PPT={PPT}
         />

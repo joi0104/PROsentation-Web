@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import classNames from 'classnames/bind'
 
-import style from './RecodingVideo.scss'
+import style from './RecordingVideo.scss'
 
 const cx = classNames.bind(style)
 
-const RecodingVideo = () => {
+const RecordingVideo = () => {
   let mediaRecorder
   let recordedBlobs
 
@@ -124,7 +124,7 @@ const RecodingVideo = () => {
   })
 
   return (
-    <div className={cx('RecodingVideo')}>
+    <div className={cx('RecordingVideo')}>
       <video ref={gumVideo} playsInline autoPlay></video>
       <p>asdadas</p>
       <video ref={recordedVideo} playsInline></video>
@@ -143,4 +143,4 @@ const RecodingVideo = () => {
   )
 }
 
-export default RecodingVideo
+export default RecordingVideo
