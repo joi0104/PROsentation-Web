@@ -66,11 +66,7 @@ const PPTView = ({ PPT }) => {
     })()
   }, [PPT])
 
-  return (
-    <div className={cx('PPTView')}>
-      <div className="webviewer" ref={viewer} style={{ height: '30vh' }} />
-    </div>
-  )
+  return <div className={cx('PPTView')} ref={viewer} />
 }
 
 export default PPTView

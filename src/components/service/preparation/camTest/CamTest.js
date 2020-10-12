@@ -3,7 +3,6 @@ import classNames from 'classnames/bind'
 
 import style from './CamTest.scss'
 import Description from 'elements/Description.js'
-import State from 'elements/State.js'
 import iconNoCam from 'assets/icons/icon-no-cam.png'
 
 const cx = classNames.bind(style)
@@ -11,7 +10,7 @@ const cx = classNames.bind(style)
 const CamTest = ({ setCamTestOK }) => {
   const [testOK, setTestOK] = useState(false)
   const video = useRef()
-  const nextButton = useRef()
+
   const constraints = (window.constraints = {
     video: {
       width: { ideal: 540 },
@@ -23,29 +22,16 @@ const CamTest = ({ setCamTestOK }) => {
     ;(async () => {
       try {
         let stream = await navigator.mediaDevices.getUserMedia(constraints)
-        testedUI(stream)
+        video.current.srcObject = stream
+        video.current.onloadedmetadata = (e) => {
+          video.current.play()
+          setTestOK(true)
+        }
       } catch (err) {
-        handleError(err)
+        console.log(err)
       }
     })()
   })
-
-  const testedUI = (stream) => {
-    video.current.srcObject = stream
-    video.current.onloadedmetadata = (e) => {
-      video.current.play()
-      nextButton.current.style.backgroundColor = '#00cccc'
-      handleSuccess()
-    }
-  }
-
-  const handleSuccess = () => {
-    setTestOK(true)
-  }
-
-  const handleError = (err) => {
-    console.log(err)
-  }
 
   const goNext = () => {
     if (testOK) {
@@ -63,12 +49,17 @@ const CamTest = ({ setCamTestOK }) => {
         읽어주세요.
       </Description>
       <div className={cx('content-wrapper')}>
-        <video ref={video} autoPlay playsInline></video>
-        <State testOK={testOK} />
+        <video ref={video} autoPlay playsInline poster={iconNoCam} />
       </div>
-      <button className={cx('button')} ref={nextButton} onClick={goNext}>
-        다음
-      </button>
+      {testOK ? (
+        <button className={cx('button')} onClick={goNext}>
+          다음
+        </button>
+      ) : (
+        <button className={cx('button')} disabled={true}>
+          다음
+        </button>
+      )}
     </div>
   )
 }

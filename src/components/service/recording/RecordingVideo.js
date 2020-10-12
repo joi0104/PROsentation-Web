@@ -1,67 +1,32 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import classNames from 'classnames/bind'
 
 import style from './RecordingVideo.scss'
+import Popup from 'components/service/recording/Popup'
 
 const cx = classNames.bind(style)
 
-const RecordingVideo = () => {
-  let mediaRecorder
-  let recordedBlobs
+let mediaRecorder
+let recordedBlobs
 
+const RecordingVideo = ({ setRecordingON, recordingON, setRecordingOK }) => {
   const gumVideo = useRef()
-  const recordedVideo = useRef()
   const recordButton = useRef()
-  const playButton = useRef()
-  const downloadButton = useRef()
+  const [popup, setPopup] = useState(false)
 
   const constraints = {
     audio: true,
     video: true,
   }
 
-  const onRecord = () => {
-    if (recordButton.current.textContent === 'Start Recording') {
-      console.log('start recoding')
-      startRecording()
+  const onRecord = async () => {
+    if (!recordingON) {
+      await startRecording()
+      await setRecordingON(true)
     } else {
-      console.log('stop recoding')
-      stopRecording()
-      recordButton.current.textContent = 'Start Recording'
-      playButton.current.disabled = false
-      downloadButton.current.disabled = false
-    }
-  }
-
-  const onPlay = () => {
-    console.log('onPlay')
-    const superBuffer = new Blob(recordedBlobs, { type: 'video/webm' })
-    recordedVideo.current.src = null
-    recordedVideo.current.srcObject = null
-    recordedVideo.current.src = window.URL.createObjectURL(superBuffer)
-    recordedVideo.current.controls = true
-    recordedVideo.current.play()
-  }
-
-  const onDownload = () => {
-    const blob = new Blob(recordedBlobs, { type: 'video/webm' })
-    const url = window.URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.style.display = 'none'
-    a.href = url
-    a.download = 'test.webm'
-    document.body.appendChild(a)
-    a.click()
-    setTimeout(() => {
-      document.body.removeChild(a)
-      window.URL.revokeObjectURL(url)
-    }, 100)
-  }
-
-  const handleDataAvailable = (e) => {
-    console.log('handleDataAvailable', e)
-    if (e.data && e.data.size > 0) {
-      recordedBlobs.push(e.data)
+      await stopRecording()
+      await setRecordingON(false)
+      setPopup(true)
     }
   }
 
@@ -89,14 +54,15 @@ const RecordingVideo = () => {
     }
 
     console.log('Created MediaRecorder', mediaRecorder, 'with options', options)
-    recordButton.current.textContent = 'Stop Recording'
-    playButton.current.disabled = true
-    downloadButton.current.disabled = true
     mediaRecorder.onstop = (event) => {
       console.log('Recorder stopped: ', event)
       console.log('Recorded Blobs: ', recordedBlobs)
     }
-    mediaRecorder.ondataavailable = handleDataAvailable
+    mediaRecorder.ondataavailable = (e) => {
+      if (e.data && e.data.size > 0) {
+        recordedBlobs.push(e.data)
+      }
+    }
     mediaRecorder.start()
     console.log('MediaRecorder started', mediaRecorder)
   }
@@ -105,40 +71,37 @@ const RecordingVideo = () => {
     mediaRecorder.stop()
   }
 
-  const handleSuccess = (stream) => {
-    recordButton.current.disabled = false
-    console.log('getUserMedia() got stream:', stream)
-    window.stream = stream
-    gumVideo.current.srcObject = stream
-  }
-
   useEffect(() => {
     ;(async () => {
       try {
         const stream = await navigator.mediaDevices.getUserMedia(constraints)
-        handleSuccess(stream)
-      } catch (e) {
-        console.error('navigator.getUserMedia error:', e)
+        window.stream = stream
+        gumVideo.current.srcObject = stream
+      } catch (err) {
+        console.log(err)
       }
     })()
   })
 
   return (
     <div className={cx('RecordingVideo')}>
-      <video ref={gumVideo} playsInline autoPlay></video>
-      <p>asdadas</p>
-      <video ref={recordedVideo} playsInline></video>
-      <div>
+      <video ref={gumVideo} playsInline autoPlay />
+      {recordingON ? (
         <button ref={recordButton} onClick={onRecord} value={''}>
-          Start Recording
+          발표 완료하기
         </button>
-        <button ref={playButton} onClick={onPlay}>
-          Play
+      ) : (
+        <button ref={recordButton} onClick={onRecord} value={''}>
+          발표 시작하기
         </button>
-        <button ref={downloadButton} onClick={onDownload}>
-          Download
-        </button>
-      </div>
+      )}
+      {popup ? (
+        <Popup
+          recordedBlobs={recordedBlobs}
+          setRecordingOK={setRecordingOK}
+          setPopup={setPopup}
+        />
+      ) : null}
     </div>
   )
 }

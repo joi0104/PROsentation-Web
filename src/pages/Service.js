@@ -38,7 +38,7 @@ const Service = () => {
         />
       ) : !recordingOK ? (
         <Recording
-          setRecodingOK={setRecordingOK}
+          setRecordingOK={setRecordingOK}
           serviceId={serviceId}
           PPT={PPT}
         />
