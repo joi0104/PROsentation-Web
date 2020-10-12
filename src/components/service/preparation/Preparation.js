@@ -26,7 +26,7 @@ const Preparation = ({ setPreparationOK, serviceId, setPPT }) => {
           camTestOK={camTestOK}
           PPTUploadOK={PPTUploadOK}
         />
-        <Banner title={'발표 준비하기'} />
+        <Banner>발표 준비하기</Banner>
 
         <div className={cx('content')}>
           {!checkItemsOK ? (

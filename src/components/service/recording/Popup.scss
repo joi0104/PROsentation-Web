@@ -1,0 +1,56 @@
+.Popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .Popup-wrapper {
+        width: 80%;
+        height: 80%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .Popup-contents {
+            width: 80%;
+            height: 85%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+
+            p {
+                margin: 0;
+            }
+
+            video {
+                width: auto;
+                height: 70%;
+            }
+
+            .button-wrapper {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                .button-cancel {
+                    border: solid 1px #00cccc;
+                    background-color: white;
+                    color: #00cccc;
+                }
+
+                .button-confirm {
+                    margin-left: 18px;
+                }
+            }
+
+        }
+    }
+
+}

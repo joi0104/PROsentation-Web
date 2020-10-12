@@ -5,8 +5,8 @@ import style from './Banner.scss'
 
 const cx = classNames.bind(style)
 
-const Banner = ({ title }) => {
-  return <div className={cx('Banner')}>{title}</div>
+const Banner = ({ children }) => {
+  return <div className={cx('Banner')}>{children}</div>
 }
 
 export default Banner
