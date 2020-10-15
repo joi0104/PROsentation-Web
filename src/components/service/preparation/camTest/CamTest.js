@@ -4,6 +4,7 @@ import classNames from 'classnames/bind'
 import style from './CamTest.scss'
 import Description from 'elements/Description.js'
 import iconNoCam from 'assets/icons/icon-no-cam.png'
+import Button from 'elements/Button.js'
 
 const cx = classNames.bind(style)
 
@@ -52,13 +53,9 @@ const CamTest = ({ setCamTestOK }) => {
         <video ref={video} autoPlay playsInline poster={iconNoCam} />
       </div>
       {testOK ? (
-        <button className={cx('button')} onClick={goNext}>
-          다음
-        </button>
+        <Button onClick={goNext}>다음</Button>
       ) : (
-        <button className={cx('button')} disabled={true}>
-          다음
-        </button>
+        <Button disabled={true}>다음</Button>
       )}
     </div>
   )

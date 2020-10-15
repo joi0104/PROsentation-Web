@@ -3,6 +3,8 @@ import classNames from 'classnames/bind'
 
 import style from './Popup.scss'
 import Banner from 'elements/Banner.js'
+import Button from 'elements/Button.js'
+import Button2 from 'elements/Button2.js'
 
 const cx = classNames.bind(style)
 
@@ -48,12 +50,8 @@ const Popup = ({ recordedBlobs, setRecordingOK, setPopup }) => {
           <p>해당 발표영상을 분석하시겠어요?</p>
           <video ref={recordedVideo} playsInline />
           <div className={cx('button-wrapper')}>
-            <button onClick={onCancel} className={cx('button-cancel')}>
-              재촬영하기
-            </button>
-            <button onClick={onConfirm} className={cx('button-confirm')}>
-              발표 영상 분석하기
-            </button>
+            <Button2 onClick={onCancel}>재촬영하기</Button2>
+            <Button onClick={onConfirm}>발표 영상 분석하기</Button>
           </div>
         </div>
       </div>

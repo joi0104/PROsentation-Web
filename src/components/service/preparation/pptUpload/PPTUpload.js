@@ -6,6 +6,7 @@ import iconUpload from 'assets/icons/icon-upload.png'
 import iconUploadDone from 'assets/icons/icon-upload-done.png'
 import Description from 'elements/Description.js'
 import { uploadPPTAPI } from 'api/http.js'
+import Button from 'elements/Button.js'
 
 const cx = classNames.bind(style)
 
@@ -66,13 +67,9 @@ const PPTUpload = ({ setPPTUploadOK, setPPT, serviceId }) => {
         </div>
       )}
       {uploadOK ? (
-        <button className={cx('button')} onClick={goNext}>
-          다음
-        </button>
+        <Button onClick={goNext}>다음</Button>
       ) : (
-        <button className={cx('button')} disabled={true}>
-          다음
-        </button>
+        <Button disabled={true}>다음</Button>
       )}
     </div>
   )
