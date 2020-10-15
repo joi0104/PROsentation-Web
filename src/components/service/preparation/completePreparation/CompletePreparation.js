@@ -4,6 +4,7 @@ import classNames from 'classnames/bind'
 import style from './CompletePreparation.scss'
 import CheckItems from 'components/service/preparation/checkItems/CheckItems.js'
 import Description from 'elements/Description.js'
+import Button from 'elements/Button.js'
 
 const cx = classNames.bind(style)
 
@@ -19,9 +20,7 @@ const CompletePreparation = ({ setPreparationOK }) => {
         본격적으로 발표를 촬영해보세요!
       </Description>
       <CheckItems PPTUploadOK={true} micTestOK={true} camTestOK={true} />
-      <button className={cx('button')} type="button" onClick={goNext}>
-        발표영상 촬영하기
-      </button>
+      <Button onClick={goNext}>발표영상 촬영하기</Button>
     </div>
   )
 }

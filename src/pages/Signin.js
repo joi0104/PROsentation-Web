@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import style from 'pages/Signin.scss'
 import SigninForm from 'components/signin/SigninForm.js'
 import Banner from 'elements/Banner.js'
-import Button from 'elements/Button.js'
+import Button2 from 'elements/Button2.js'
 import FindLink from 'components/signin/FindLink.js'
 
 const cx = classNames.bind(style)
@@ -23,7 +23,7 @@ const Signin = ({ setHasCookie }) => {
         <Banner title={'로그인'} />
         <SigninForm setHasCookie={setHasCookie} />
         <FindLink />
-        <Button title={'회원가입'} onClick={onClick} />
+        <Button2 onClick={onClick}>회원가입</Button2>
       </div>
     </div>
   )

@@ -4,13 +4,14 @@ import classNames from 'classnames/bind'
 import SoundMeter from 'utils/SoundMeter.js'
 import Description from 'elements/Description.js'
 import style from './MicTest.scss'
+import Button from 'elements/Button.js'
 
 const cx = classNames.bind(style)
 
 const MicTest = ({ setMicTestOK }) => {
   const [testOK, setTestOK] = useState(false)
-  const nextButton = useRef()
   const meter = useRef()
+
   const constraints = (window.constraints = {
     audio: true,
     video: false,
@@ -23,10 +24,9 @@ const MicTest = ({ setMicTestOK }) => {
         window.audioContext = new AudioContext()
         let stream = await navigator.mediaDevices.getUserMedia(constraints)
         await checkMeter(stream)
-        testedUI()
-        handleSuccess()
+        await setTestOK(true)
       } catch (err) {
-        handleError(err)
+        console.log(err)
       }
     })()
   })
@@ -53,18 +53,6 @@ const MicTest = ({ setMicTestOK }) => {
     })
   }
 
-  const testedUI = () => {
-    nextButton.current.style.backgroundColor = '#00cccc'
-  }
-
-  const handleSuccess = () => {
-    setTestOK(true)
-  }
-
-  const handleError = (err) => {
-    console.log(err)
-  }
-
   const goNext = () => {
     if (testOK) {
       setMicTestOK(true)
@@ -82,11 +70,13 @@ const MicTest = ({ setMicTestOK }) => {
       </Description>
       <div className={cx('content-wrapper')}>
         <p className={cx('script')}>안녕하세요, 만나서 반갑습니다!</p>
-        <meter high="0.2" max="0.5" value="0" ref={meter}></meter>
+        <meter high="0.001" max="0.5" value="0" ref={meter}></meter>
       </div>
-      <button className={cx('button')} ref={nextButton} onClick={goNext}>
-        다음
-      </button>
+      {testOK ? (
+        <Button onClick={goNext}>다음</Button>
+      ) : (
+        <Button disabled={true}>다음</Button>
+      )}
     </div>
   )
 }
