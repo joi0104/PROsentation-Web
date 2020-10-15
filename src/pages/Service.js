@@ -11,10 +11,10 @@ const cx = classNames.bind(style)
 
 const Service = () => {
   const [serviceId, setServiceId] = useState()
-  const [preparationOK, setPreparationOK] = useState(false)
-  const [recordingOK, setRecordingOK] = useState(false)
-  const [resultOK, setResultOK] = useState(false)
+  const [preparationOK, setPreparationOK] = useState(true)
+  const [recordingOK, setRecordingOK] = useState(true)
   const [PPT, setPPT] = useState()
+  const [video, setVideo] = useState()
 
   useEffect(() => {
     ;(async () => {
@@ -32,20 +32,19 @@ const Service = () => {
     <div className={cx('Service')}>
       {!preparationOK ? (
         <Preparation
-          setPreparationOK={setPreparationOK}
           serviceId={serviceId}
+          setPreparationOK={setPreparationOK}
           setPPT={setPPT}
         />
       ) : !recordingOK ? (
         <Recording
-          setRecordingOK={setRecordingOK}
           serviceId={serviceId}
+          setRecordingOK={setRecordingOK}
           PPT={PPT}
+          setVideo={setVideo}
         />
-      ) : !resultOK ? (
-        <Result setResultOK={setResultOK} serviceId={serviceId} />
       ) : (
-        <>모두완료!</>
+        <Result serviceId={serviceId} video={video} />
       )}
     </div>
   )

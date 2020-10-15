@@ -1,21 +1,12 @@
-import React from 'react'
-import classNames from 'classnames/bind'
+import React, { useState } from 'react'
 
-import style from './Result.scss'
+import Loading from 'components/service/result/Loading.js'
+import Analysis from 'components/service/result/Analysis.js'
 
-const cx = classNames.bind(style)
+const Result = ({ serviceId, video }) => {
+  const [resultOK, setResultOK] = useState(false)
 
-const Result = ({ setResultOK }) => {
-  const goNext = () => {
-    setResultOK(true)
-  }
-
-  return (
-    <div className={cx('Result')}>
-      분석결과
-      <button onClick={goNext}>완료</button>
-    </div>
-  )
+  return resultOK ? <Analysis /> : <Loading />
 }
 
 export default Result

@@ -11,9 +11,14 @@ const cx = classNames.bind(style)
 let mediaRecorder
 let recordedBlobs
 
-const RecordingVideo = ({ setRecordingON, recordingON, setRecordingOK }) => {
+const RecordingVideo = ({
+  recordingON,
+  setRecordingON,
+  setRecordingOK,
+  serviceId,
+  setVideo,
+}) => {
   const gumVideo = useRef()
-  const recordButton = useRef()
   const [popup, setPopup] = useState(false)
 
   const constraints = {
