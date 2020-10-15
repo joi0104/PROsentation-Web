@@ -4,10 +4,14 @@ import classNames from 'classnames/bind'
 import style from './StartPreparation.scss'
 import CheckItems from 'components/service/preparation/checkItems/CheckItems.js'
 import Description from 'elements/Description.js'
+import Button from 'elements/Button.js'
 
 const cx = classNames.bind(style)
 
 const StartPreparation = ({ setCheckItemsOK }) => {
+  const goNext = () => {
+    setCheckItemsOK(true)
+  }
   return (
     <div className={cx('StartPreparation')}>
       <Description>
@@ -16,15 +20,7 @@ const StartPreparation = ({ setCheckItemsOK }) => {
       </Description>
 
       <CheckItems PPTUploadOK={false} micTestOK={false} camTestOK={false} />
-      <button
-        className={cx('button')}
-        type="button"
-        onClick={() => {
-          setCheckItemsOK(true)
-        }}
-      >
-        준비 시작하기
-      </button>
+      <Button onClick={goNext}>준비 시작하기</Button>
     </div>
   )
 }

@@ -4,6 +4,7 @@ import classNames from 'classnames/bind'
 import SoundMeter from 'utils/SoundMeter.js'
 import Description from 'elements/Description.js'
 import style from './MicTest.scss'
+import Button from 'elements/Button.js'
 
 const cx = classNames.bind(style)
 
@@ -72,13 +73,9 @@ const MicTest = ({ setMicTestOK }) => {
         <meter high="0.05" max="0.5" value="0" ref={meter}></meter>
       </div>
       {testOK ? (
-        <button className={cx('button')} onClick={goNext}>
-          다음
-        </button>
+        <Button onClick={goNext}>다음</Button>
       ) : (
-        <button className={cx('button')} disabled={true}>
-          다음
-        </button>
+        <Button disabled={true}>다음</Button>
       )}
     </div>
   )

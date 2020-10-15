@@ -1,18 +1,20 @@
-.Button {
+.Button2 {
     width: 300px;
     height: 45px;
     border-radius: 100px;
-    background-color: #00cccc;
+    border: 1px solid #00cccc;
     font-family: NanumSquare;
     font-size: 18px;
     font-weight: bold;
-    color: white;
+    color: #00cccc;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 0;
+    background-color: white;
 }
 
-.Button:disabled {
+.Button2:disabled {
     background-color: #f8f8f8;
+    border: 0;
+    color: white;
 }
