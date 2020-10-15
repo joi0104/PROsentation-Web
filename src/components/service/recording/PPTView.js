@@ -45,7 +45,6 @@ const PPTView = ({ PPT }) => {
           'searchPanel',
           'viewControlsOverlay',
           'menuOverlay',
-          'pageNavOverlay',
           'toolsOverlay',
           'searchOverlay',
           'annotationPopup',

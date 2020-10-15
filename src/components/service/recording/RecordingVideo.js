@@ -4,6 +4,7 @@ import classNames from 'classnames/bind'
 import style from './RecordingVideo.scss'
 import Popup from 'components/service/recording/Popup'
 import Button from 'elements/Button.js'
+import Stopwatch from 'components/service/recording/Stopwatch.js'
 
 const cx = classNames.bind(style)
 
@@ -87,6 +88,7 @@ const RecordingVideo = ({ setRecordingON, recordingON, setRecordingOK }) => {
   return (
     <div className={cx('RecordingVideo')}>
       <video ref={gumVideo} playsInline autoPlay />
+      <Stopwatch state={recordingON} />
       {recordingON ? (
         <Button onClick={onRecord}>발표 완료하기</Button>
       ) : (

@@ -70,7 +70,7 @@ const MicTest = ({ setMicTestOK }) => {
       </Description>
       <div className={cx('content-wrapper')}>
         <p className={cx('script')}>안녕하세요, 만나서 반갑습니다!</p>
-        <meter high="0.05" max="0.5" value="0" ref={meter}></meter>
+        <meter high="0.001" max="0.5" value="0" ref={meter}></meter>
       </div>
       {testOK ? (
         <Button onClick={goNext}>다음</Button>
