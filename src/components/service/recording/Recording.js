@@ -10,7 +10,7 @@ import iconRec from 'assets/icons/icon-rec.png'
 
 const cx = classNames.bind(style)
 
-const Recording = ({ serviceId, setRecordingOK, PPT, setVideo }) => {
+const Recording = ({ setRecordingOK, PPT, setVideo }) => {
   const [recordingON, setRecordingON] = useState(false)
 
   return (
@@ -32,10 +32,9 @@ const Recording = ({ serviceId, setRecordingOK, PPT, setVideo }) => {
         <div className={cx('content-wrapper')}>
           <PPTView PPT={PPT} />
           <RecordingVideo
-            recordingON={recordingON}
             setRecordingON={setRecordingON}
             setRecordingOK={setRecordingOK}
-            serviceId={serviceId}
+            recordingON={recordingON}
             setVideo={setVideo}
           />
         </div>

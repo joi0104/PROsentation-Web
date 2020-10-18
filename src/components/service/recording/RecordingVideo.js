@@ -15,7 +15,6 @@ const RecordingVideo = ({
   recordingON,
   setRecordingON,
   setRecordingOK,
-  serviceId,
   setVideo,
 }) => {
   const gumVideo = useRef()
@@ -103,6 +102,7 @@ const RecordingVideo = ({
         <Popup
           recordedBlobs={recordedBlobs}
           setRecordingOK={setRecordingOK}
+          setVideo={setVideo}
           setPopup={setPopup}
         />
       ) : null}

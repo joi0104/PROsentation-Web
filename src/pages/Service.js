@@ -11,8 +11,8 @@ const cx = classNames.bind(style)
 
 const Service = () => {
   const [serviceId, setServiceId] = useState()
-  const [preparationOK, setPreparationOK] = useState(true)
-  const [recordingOK, setRecordingOK] = useState(true)
+  const [preparationOK, setPreparationOK] = useState(false)
+  const [recordingOK, setRecordingOK] = useState(false)
   const [PPT, setPPT] = useState()
   const [video, setVideo] = useState()
 
@@ -38,7 +38,6 @@ const Service = () => {
         />
       ) : !recordingOK ? (
         <Recording
-          serviceId={serviceId}
           setRecordingOK={setRecordingOK}
           PPT={PPT}
           setVideo={setVideo}
