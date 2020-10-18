@@ -4,6 +4,7 @@ import classNames from 'classnames/bind'
 import style from 'pages/user/MyInfo.scss'
 import iconUser from 'assets/icons/icon-user.png'
 import { getProfileAPI } from 'api/http.js'
+import iconTagProfile from 'assets/icons/icon-tag-profile.png'
 
 const cx = classNames.bind(style)
 
@@ -23,6 +24,7 @@ const MyInfo = () => {
     <div className={cx('MyInfo')}>
       <div className={cx('MyInfo-wrapper')}>
         <div className={cx('MyInfo-title')}>
+          <img src={iconTagProfile} alt="icon-tag-profile" />
           <img src={iconUser} alt="icon-user" />
           <p>안녕하세요. {user.username} 님.</p>
           <p>회원님의 개인정보는 다음과 같아요.</p>

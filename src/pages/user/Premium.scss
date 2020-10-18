@@ -19,17 +19,26 @@
         align-items: center;
 
         .Premium-title {
-            width: 100%;
-            height: 20%;
+            width: 85%;
+            height: 25%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            img {
+
+            img[alt="icon-tag-premium"] {
+                align-self: start;
+                width: 62px;
+                height: 28px;
+                object-fit: contain;
+            }
+
+            img[alt="icon-expert"] {
                 width: 32px;
                 height: 32px;
                 margin-bottom: 10px;
             }
+
             p {
                 width: 100%;
                 margin: 0;
@@ -43,15 +52,15 @@
         }
 
         .Premium-contents {
-            width: 100%;
-            height: 75%;
+            width: 80%;
+            height: 70%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
 
             .Premium-content {
-                width: 80%;
+                width: 100%;
                 height: 18%;
                 border-radius: 3px;
                 border: solid 1px #c7c7c8;

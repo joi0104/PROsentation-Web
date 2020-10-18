@@ -2,7 +2,8 @@ import React from 'react'
 import classNames from 'classnames/bind'
 
 import style from 'pages/user/Premium.scss'
-import iconExpert from 'assets/icons/icon-user.png'
+import iconExpert from 'assets/icons/icon-expert.png'
+import iconTagPremium from 'assets/icons/icon-tag-premium.png'
 
 const cx = classNames.bind(style)
 
@@ -11,6 +12,7 @@ const Premium = () => {
     <div className={cx('Premium')}>
       <div className={cx('Premium-wrapper')}>
         <div className={cx('Premium-title')}>
+          <img src={iconTagPremium} alt="icon-tag-premium" />
           <img src={iconExpert} alt="icon-expert" />
           <p>업로드한 발표 동영상을</p>
           <p>전문가가 상세히 분석해줘요.</p>
