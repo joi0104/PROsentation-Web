@@ -8,6 +8,8 @@ export const signinAPI = (form) => axios.post('/user/signin', form)
 
 export const init = () => axios.get('/presentation/init')
 
+export const getProfileAPI = () => axios.get('/user/info/profile')
+
 export const uploadPPTAPI = (form) =>
   axios.post('/presentation/ppt', form, {
     headers: {
