@@ -9,6 +9,8 @@ import Signin from 'pages/Signin.js'
 import Signup from 'pages/Signup.js'
 import Service from 'pages/Service.js'
 import User from 'pages/user/User.js'
+import FindEmail from 'pages/FindEmail.js'
+import FindPassword from 'pages/FindPassword.js'
 
 const cx = classNames.bind(style)
 
@@ -34,6 +36,16 @@ const App = () => {
         exact
         path="/signup"
         component={() => (!hasCookie ? <Signup /> : <Redirect to="/" />)}
+      />
+      <Route
+        exact
+        path="/find-email"
+        component={() => (!hasCookie ? <FindEmail /> : <Redirect to="/" />)}
+      />
+      <Route
+        exact
+        path="/find-password"
+        component={() => (!hasCookie ? <FindPassword /> : <Redirect to="/" />)}
       />
       <Route
         exact

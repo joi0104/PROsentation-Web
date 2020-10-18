@@ -1,27 +1,25 @@
 import React from 'react'
 import classNames from 'classnames/bind'
-import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import style from 'pages/Signup.scss'
 import SignupForm from 'components/signup/SignupForm.js'
-import Banner from 'elements/Banner.js'
 import Button2 from 'elements/Button2.js'
-import FindLink from 'components/signin/FindLink.js'
+import Line from 'elements/Line.js'
 
 const cx = classNames.bind(style)
 
 const Signup = () => {
-  let history = useHistory()
-  const onClick = () => {
-    history.push('/signin')
-  }
   return (
     <div className={cx('Signup')}>
       <div className={cx('Signup-wrapper')}>
-        <Banner title={'회원가입'} />
-        <SignupForm />
-        <FindLink />
-        <Button2 onClick={onClick}>로그인</Button2>
+        <div className={cx('Signup-content')}>
+          <SignupForm />
+          <Line />
+          <Link to="/signin" style={{ textDecoration: 'none' }}>
+            <Button2>로그인 하기</Button2>
+          </Link>
+        </div>
       </div>
     </div>
   )

@@ -63,7 +63,7 @@ const SignupForm = () => {
   }
 
   return (
-    <form className={cx('SigninForm')} onSubmit={onSubmit}>
+    <form className={cx('SignupForm')} onSubmit={onSubmit}>
       <Input
         label={'이메일'}
         type={'email'}
