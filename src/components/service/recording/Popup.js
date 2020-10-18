@@ -8,7 +8,7 @@ import Button2 from 'elements/Button2.js'
 
 const cx = classNames.bind(style)
 
-const Popup = ({ recordedBlobs, setRecordingOK, setPopup }) => {
+const Popup = ({ recordedBlobs, setRecordingOK, setPopup, setVideo }) => {
   const recordedVideo = useRef()
 
   useEffect(() => {
@@ -24,22 +24,8 @@ const Popup = ({ recordedBlobs, setRecordingOK, setPopup }) => {
   }
 
   const onConfirm = () => {
+    setVideo(recordedBlobs)
     setRecordingOK(true)
-  }
-
-  const onDownload = () => {
-    const blob = new Blob(recordedBlobs, { type: 'video/webm' })
-    const url = window.URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.style.display = 'none'
-    a.href = url
-    a.download = 'test.webm'
-    document.body.appendChild(a)
-    a.click()
-    setTimeout(() => {
-      document.body.removeChild(a)
-      window.URL.revokeObjectURL(url)
-    }, 100)
   }
 
   return (

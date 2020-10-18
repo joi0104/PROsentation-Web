@@ -20,6 +20,7 @@ const PPTUpload = ({ setPPTUploadOK, setPPT, serviceId }) => {
       setUploadON(true)
       const form = new FormData()
       form.append('ppt', ppt.current.files[0])
+      form.append('serviceId', serviceId)
       setPPT(ppt.current.files[0])
       await uploadPPTAPI(form)
       setUploadON(false)

@@ -14,3 +14,11 @@ export const uploadPPTAPI = (form) =>
       'Content-Type': 'multipart/form-data',
     },
   })
+
+export const uploadVideoAPI = (form) => {
+  axios.post('/presentation/video', form, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  })
+}
