@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import classNames from 'classnames/bind'
 
 import style from 'pages/user/MyInfo.scss'
-import Banner from 'elements/Banner.js'
+import iconUser from 'assets/icons/icon-user.png'
 import { getProfileAPI } from 'api/http.js'
 
 const cx = classNames.bind(style)
@@ -22,12 +22,17 @@ const MyInfo = () => {
   return (
     <div className={cx('MyInfo')}>
       <div className={cx('MyInfo-wrapper')}>
-        <Banner>나의 정보</Banner>
+        <div className={cx('MyInfo-title')}>
+          <img src={iconUser} alt="icon-user" />
+          <p>안녕하세요. {user.username} 님.</p>
+          <p>회원님의 개인정보는 다음과 같아요.</p>
+        </div>
         <div className={cx('MyInfo-contents')}>
           <div className={cx('MyInfo-profile')}>
             <div className={cx('MyInfo-content')}>
               <p className={cx('MyInfo-content-title')}>아이디</p>
               <p className={cx('MyInfo-content-des')}>{user.email}</p>
+              <button className={cx('no-button')} disabled />
             </div>
             <div className={cx('MyInfo-content')}>
               <p className={cx('MyInfo-content-title')}>비밀번호</p>
@@ -58,6 +63,7 @@ const MyInfo = () => {
             <div className={cx('MyInfo-content')}>
               <p className={cx('MyInfo-content-title')}>결제일시</p>
               <p className={cx('MyInfo-content-des')}>abc</p>
+              <button className={cx('no-button')} disabled />
             </div>
             <div className={cx('MyInfo-content')}>
               <p className={cx('MyInfo-content-title')}>회원탈퇴</p>
