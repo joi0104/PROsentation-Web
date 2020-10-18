@@ -8,17 +8,21 @@
     .Signup-wrapper {
         min-width: 482px;
         min-height: 600px;
-        width: 40%;
-        height: 90%;
+        width: 35%;
+        height: 95%;
         box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
         background-color: #ffffff;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-    } 
 
-    .FindLink {
-        margin: 5px 0;
-    }
+        .Signup-content {
+            width: 75%;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+    } 
 }

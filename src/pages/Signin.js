@@ -16,12 +16,12 @@ const Signin = ({ setHasCookie }) => {
         <div className={cx('Signin-content')}>
           <SigninForm setHasCookie={setHasCookie} />
           <div className={cx('Find-links')}>
-            <Link className={cx('Find-link')} to="/find-password">
-              비밀번호 찾기
+            <Link className={cx('Find-link')} to="/find-email">
+              아이디 찾기
             </Link>
             <Link className={cx('Find-link')}>|</Link>
-            <Link className={cx('Find-link')} to="/signin">
-              로그인 하기
+            <Link className={cx('Find-link')} to="/find-password">
+              비밀번호 찾기
             </Link>
           </div>
           <Line />
