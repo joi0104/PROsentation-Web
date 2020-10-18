@@ -4,9 +4,8 @@ import { useHistory } from 'react-router-dom'
 
 import style from 'pages/Signup.scss'
 import SignupForm from 'components/signup/SignupForm.js'
-import Banner from 'elements/Banner.js'
 import Button2 from 'elements/Button2.js'
-import FindLink from 'components/signin/FindLink.js'
+import FindLink from 'elements/FindLink.js'
 
 const cx = classNames.bind(style)
 
@@ -18,7 +17,6 @@ const Signup = () => {
   return (
     <div className={cx('Signup')}>
       <div className={cx('Signup-wrapper')}>
-        <Banner title={'회원가입'} />
         <SignupForm />
         <FindLink />
         <Button2 onClick={onClick}>로그인</Button2>

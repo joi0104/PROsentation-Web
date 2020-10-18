@@ -1,0 +1,41 @@
+.FindEmail {
+    width: 100%;
+    height: 92%;
+    background-color: rgba(0, 204, 204, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .FindEmail-wrapper {
+        min-width: 482px;
+        min-height: 600px;
+        width: 35%;
+        height: 75%;
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .FindEmail-content {
+            width: 75%;
+            height: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+
+            .Find-links {
+                .Find-link {
+                    font-family: NanumSquare;
+                    font-size: 14px;
+                    color: #808083;
+                    margin: 0 5px;
+                }
+            }
+        }
+
+
+    }
+
+}
