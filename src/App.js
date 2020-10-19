@@ -11,6 +11,7 @@ import Service from 'pages/Service.js'
 import User from 'pages/user/User.js'
 import FindEmail from 'pages/FindEmail.js'
 import FindPassword from 'pages/FindPassword.js'
+import Error from 'pages/Error.js'
 
 const cx = classNames.bind(style)
 
@@ -53,9 +54,11 @@ const App = () => {
         component={() => (hasCookie ? <Service /> : <Redirect to="/" />)}
       />
       <Route
+        exact
         path="/user"
         component={() => (hasCookie ? <User /> : <Redirect to="/" />)}
       />
+      <Route component={Error} />
     </div>
   )
 }
