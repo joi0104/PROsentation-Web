@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, Switch } from 'react-router-dom'
 import classNames from 'classnames/bind'
 
 import style from 'App.scss'
@@ -21,44 +21,52 @@ const App = () => {
   return (
     <div className={cx('App')}>
       <Navbar hasCookie={hasCookie} setHasCookie={setHasCookie} />
-      <Route exact path="/" component={() => <Main hasCookie={hasCookie} />} />
-      <Route
-        exact
-        path="/signin"
-        component={() =>
-          !hasCookie ? (
-            <Signin setHasCookie={setHasCookie} />
-          ) : (
-            <Redirect to="/" />
-          )
-        }
-      />
-      <Route
-        exact
-        path="/signup"
-        component={() => (!hasCookie ? <Signup /> : <Redirect to="/" />)}
-      />
-      <Route
-        exact
-        path="/find-email"
-        component={() => (!hasCookie ? <FindEmail /> : <Redirect to="/" />)}
-      />
-      <Route
-        exact
-        path="/find-password"
-        component={() => (!hasCookie ? <FindPassword /> : <Redirect to="/" />)}
-      />
-      <Route
-        exact
-        path="/service"
-        component={() => (hasCookie ? <Service /> : <Redirect to="/" />)}
-      />
-      <Route
-        exact
-        path="/user"
-        component={() => (hasCookie ? <User /> : <Redirect to="/" />)}
-      />
-      <Route component={Error} />
+      <Switch>
+        <Route
+          exact
+          path="/"
+          component={() => <Main hasCookie={hasCookie} />}
+        />
+        <Route
+          exact
+          path="/signin"
+          component={() =>
+            !hasCookie ? (
+              <Signin setHasCookie={setHasCookie} />
+            ) : (
+              <Redirect to="/" />
+            )
+          }
+        />
+        <Route
+          exact
+          path="/signup"
+          component={() => (!hasCookie ? <Signup /> : <Redirect to="/" />)}
+        />
+        <Route
+          exact
+          path="/find-email"
+          component={() => (!hasCookie ? <FindEmail /> : <Redirect to="/" />)}
+        />
+        <Route
+          exact
+          path="/find-password"
+          component={() =>
+            !hasCookie ? <FindPassword /> : <Redirect to="/" />
+          }
+        />
+        <Route
+          exact
+          path="/service"
+          component={() => (hasCookie ? <Service /> : <Redirect to="/" />)}
+        />
+        <Route
+          exact
+          path="/user"
+          component={() => (hasCookie ? <User /> : <Redirect to="/" />)}
+        />
+        <Route component={Error} />
+      </Switch>
     </div>
   )
 }
