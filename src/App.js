@@ -61,7 +61,6 @@ const App = () => {
           component={() => (hasCookie ? <Service /> : <Redirect to="/" />)}
         />
         <Route
-          exact
           path="/user"
           component={() => (hasCookie ? <User /> : <Redirect to="/" />)}
         />

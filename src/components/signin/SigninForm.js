@@ -40,9 +40,9 @@ const SigninForm = ({ setHasCookie }) => {
       let res = await signinAPI(form)
       axios.defaults.headers.common['X-AUTH-TOKEN'] = res.data.token
       msgRef.current.style.visibility = 'hidden'
-      setHasCookie(true)
       initForm()
       history.goBack()
+      setHasCookie(true)
     } catch {
       msgRef.current.style.visibility = 'visible'
     }

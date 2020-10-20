@@ -5,23 +5,32 @@ import style from 'pages/user/MyInfo.scss'
 import iconUser from 'assets/icons/icon-user.png'
 import { getProfileAPI } from 'api/http.js'
 import iconTagProfile from 'assets/icons/icon-tag-profile.png'
+import ErrorPopup from 'components/ErrorPopup.js'
 
 const cx = classNames.bind(style)
 
 const MyInfo = () => {
+  const [error, setError] = useState(null)
   const [user, setUser] = useState({
     email: '',
     username: '',
     phone: '',
   })
+
   useEffect(() => {
     ;(async () => {
-      const res = await getProfileAPI()
-      setUser(res.data)
+      try {
+        const res = await getProfileAPI()
+        setUser(res.data)
+      } catch (error) {
+        setError(error)
+      }
     })()
   }, [])
+
   return (
     <div className={cx('MyInfo')}>
+      {error ? <ErrorPopup error={error} /> : null}
       <div className={cx('MyInfo-wrapper')}>
         <div className={cx('MyInfo-title')}>
           <img src={iconTagProfile} alt="icon-tag-profile" />

@@ -7,10 +7,12 @@ import iconUploadDone from 'assets/icons/icon-upload-done.png'
 import Description from 'elements/Description.js'
 import { uploadPPTAPI } from 'api/http.js'
 import Button from 'elements/Button.js'
+import ErrorPopup from 'components/ErrorPopup.js'
 
 const cx = classNames.bind(style)
 
 const PPTUpload = ({ setPPTUploadOK, setPPT, serviceId }) => {
+  const [error, setError] = useState(null)
   const ppt = useRef()
   const [uploadON, setUploadON] = useState(false)
   const [uploadOK, setUploadOK] = useState(false)
@@ -25,8 +27,8 @@ const PPTUpload = ({ setPPTUploadOK, setPPT, serviceId }) => {
       await uploadPPTAPI(form)
       setUploadON(false)
       setUploadOK(true)
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+      setError(error)
     }
   }
 
@@ -40,6 +42,7 @@ const PPTUpload = ({ setPPTUploadOK, setPPT, serviceId }) => {
 
   return (
     <div className={cx('PPTUpload')}>
+      {error ? <ErrorPopup error={error} /> : null}
       <Description>우선, 발표자료를 업로드 해주세요.</Description>
       {uploadOK || uploadON ? (
         uploadON ? (
