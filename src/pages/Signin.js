@@ -19,7 +19,9 @@ const Signin = ({ setHasCookie }) => {
             <Link className={cx('Find-link')} to="/find-email">
               아이디 찾기
             </Link>
-            <Link className={cx('Find-link')}>|</Link>
+            <Link to="/" className={cx('Find-link')}>
+              |
+            </Link>
             <Link className={cx('Find-link')} to="/find-password">
               비밀번호 찾기
             </Link>

@@ -7,9 +7,9 @@ import style from './Stopwatch.scss'
 const cx = classNames.bind(style)
 
 var runClock = null
+let counter = 0
 
 const Stopwatch = ({ state }) => {
-  let counter = 0
   const time = useRef()
 
   useEffect(() => {
