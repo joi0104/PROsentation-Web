@@ -13,7 +13,7 @@ const Result = ({ serviceId, video }) => {
     ;(async () => {
       try {
         const form = new FormData()
-        form.append('media', video)
+        form.append('media', new Blob(video, { type: 'video/webm' }))
         form.append('serviceId', serviceId)
         await uploadVideoAPI(form)
         setResultOK(true)
