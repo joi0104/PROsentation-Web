@@ -3,16 +3,17 @@
     height: 8%;
     display: flex;
     justify-content:space-between;
+    align-items: center;
     border-bottom: solid 1px #e3e3e3;
     .Navbar-logo {
         width: 190px;
         height: 28px;
         object-fit: contain;
-        margin: auto auto auto 5%;
+        margin: auto auto auto 50px;
     }
     .Profile {
         width: 28px;
         height: 28px;
-        margin: auto 5% auto auto;
+        margin: auto 50px auto auto;
     }
 }
