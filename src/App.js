@@ -58,11 +58,13 @@ const App = () => {
         <Route
           exact
           path="/service"
-          component={() => (hasCookie ? <Service /> : <Redirect to="/" />)}
+          component={() =>
+            hasCookie ? <Service /> : <Redirect to="/signin" />
+          }
         />
         <Route
           path="/user"
-          component={() => (hasCookie ? <User /> : <Redirect to="/" />)}
+          component={() => (hasCookie ? <User /> : <Redirect to="/signin" />)}
         />
         <Route component={Error} />
       </Switch>

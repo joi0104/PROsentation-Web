@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames/bind'
-import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import style from 'pages/Main.scss'
 import PremiumNavbar from 'components/navbar/PremiumNavbar.js'
@@ -9,11 +9,6 @@ import iconArrow from 'assets/icons/icon-arrow.png'
 const cx = classNames.bind(style)
 
 const Main = ({ hasCookie }) => {
-  let history = useHistory()
-
-  const onClick = () => {
-    history.push(hasCookie ? '/service' : '/signin')
-  }
   return (
     <div className={cx('Main')}>
       <PremiumNavbar />
@@ -27,10 +22,10 @@ const Main = ({ hasCookie }) => {
       <p className={cx('Main-button-decsription')}>
         학생이라면? AI에게 무료로 발표 코칭 받기
       </p>
-      <div className={cx('Main-button')} onClick={onClick}>
+      <Link to="/service" className={cx('Main-button')}>
         발표 시작하기
         <img src={iconArrow} alt="icon-arrow" />
-      </div>
+      </Link>
     </div>
   )
 }
