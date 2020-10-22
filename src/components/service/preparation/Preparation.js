@@ -12,7 +12,7 @@ import Banner from 'elements/Banner.js'
 
 const cx = classNames.bind(style)
 
-const Preparation = ({ setPreparationOK, serviceId, setPPT }) => {
+const Preparation = ({ setPreparationOK }) => {
   const [checkItemsOK, setCheckItemsOK] = useState(false)
   const [micTestOK, setMicTestOK] = useState(false)
   const [camTestOK, setCamTestOK] = useState(false)
@@ -36,11 +36,7 @@ const Preparation = ({ setPreparationOK, serviceId, setPPT }) => {
           ) : !camTestOK ? (
             <CamTest setCamTestOK={setCamTestOK} />
           ) : !PPTUploadOK ? (
-            <PPTUpload
-              setPPTUploadOK={setPPTUploadOK}
-              setPPT={setPPT}
-              serviceId={serviceId}
-            />
+            <PPTUpload setPPTUploadOK={setPPTUploadOK} />
           ) : (
             <CompletePreparation setPreparationOK={setPreparationOK} />
           )}

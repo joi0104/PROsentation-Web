@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import classNames from 'classnames/bind'
 
 import style from './PPTUpload.scss'
@@ -8,32 +8,36 @@ import Description from 'elements/Description.js'
 import { uploadPPTAPI } from 'api/http.js'
 import Button from 'elements/Button.js'
 import ErrorPopup from 'components/ErrorPopup.js'
+import UserContext from 'contexts/user.js'
 
 const cx = classNames.bind(style)
 
-const PPTUpload = ({ setPPTUploadOK, setPPT, serviceId }) => {
+const PPTUpload = ({ setPPTUploadOK }) => {
+  const { state, actions } = useContext(UserContext)
   const [error, setError] = useState(null)
-  const ppt = useRef()
-  const [uploadON, setUploadON] = useState(false)
-  const [uploadOK, setUploadOK] = useState(false)
+  const pptRef = useRef()
+  const [uploadingON, setUploadingON] = useState(false)
+  const [uploadingOK, setUploadingOK] = useState(false)
 
   const handleUpload = async () => {
     try {
-      setUploadON(true)
+      setUploadingON(true)
+      setUploadingOK(false)
+      const PPT = pptRef.current.files[0]
       const form = new FormData()
-      form.append('ppt', ppt.current.files[0])
-      form.append('serviceId', serviceId)
-      setPPT(ppt.current.files[0])
+      form.append('ppt', PPT)
+      form.append('serviceId', state.serviceId)
       await uploadPPTAPI(form)
-      setUploadON(false)
-      setUploadOK(true)
+      actions.setPPT(PPT)
+      setUploadingON(false)
+      setUploadingOK(true)
     } catch (error) {
       setError(error)
     }
   }
 
   const goNext = () => {
-    if (uploadOK) {
+    if (uploadingOK) {
       setPPTUploadOK(true)
     } else {
       alert('발표자료를 업로드 해주세요!')
@@ -44,8 +48,8 @@ const PPTUpload = ({ setPPTUploadOK, setPPT, serviceId }) => {
     <div className={cx('PPTUpload')}>
       {error ? <ErrorPopup error={error} /> : null}
       <Description>우선, 발표자료를 업로드 해주세요.</Description>
-      {uploadOK || uploadON ? (
-        uploadON ? (
+      {uploadingOK || uploadingON ? (
+        uploadingON ? (
           <div className={cx('input-wrapper')}>
             <img src={iconUpload} alt="pdf" />
             <p className={cx('input-description')}>업로드 중</p>
@@ -63,14 +67,14 @@ const PPTUpload = ({ setPPTUploadOK, setPPT, serviceId }) => {
           <input
             type="file"
             id="pdf"
-            ref={ppt}
+            ref={pptRef}
             accept=".pdf"
             onChange={handleUpload}
           />
           <p className={cx('input-description')}>!PDF 파일만 가능해요!</p>
         </div>
       )}
-      {uploadOK ? (
+      {uploadingOK ? (
         <Button onClick={goNext}>다음</Button>
       ) : (
         <Button disabled={true}>다음</Button>
