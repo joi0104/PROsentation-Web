@@ -4,7 +4,6 @@ const UserContext = createContext({
   state: {
     email: '',
     username: '',
-    phone: '',
     serviceId: '',
     PPT: '',
     video: '',
@@ -12,7 +11,6 @@ const UserContext = createContext({
   actions: {
     setEmail: () => {},
     setUsername: () => {},
-    setPhone: () => {},
     setServiceId: () => {},
     setPPT: () => {},
     setVideo: () => {},
@@ -22,17 +20,15 @@ const UserContext = createContext({
 const UserProvider = ({ children }) => {
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
-  const [phone, setPhone] = useState('')
   const [serviceId, setServiceId] = useState('')
   const [PPT, setPPT] = useState('')
   const [video, setVideo] = useState('')
 
   const value = {
-    state: { email, username, phone, serviceId, PPT, video },
+    state: { email, username, serviceId, PPT, video },
     actions: {
       setEmail,
       setUsername,
-      setPhone,
       setServiceId,
       setPPT,
       setVideo,
