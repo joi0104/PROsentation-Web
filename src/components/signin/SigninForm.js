@@ -1,21 +1,21 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useContext } from 'react'
 import classNames from 'classnames/bind'
-import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
 import styles from 'components/signin/SigninForm.scss'
 import Input from 'elements/Input.js'
 import { signinAPI } from 'api/http.js'
+import UserContext from 'contexts/user.js'
 
 const cx = classNames.bind(styles)
 
 const SigninForm = ({ setHasCookie }) => {
+  const { actions } = useContext(UserContext)
   const [form, setForm] = useState({
     email: '',
     password: '',
   })
   const msgRef = useRef()
-  let history = useHistory()
 
   const initForm = () => {
     setForm({
@@ -37,11 +37,12 @@ const SigninForm = ({ setHasCookie }) => {
       return
     }
     try {
-      let res = await signinAPI(form)
+      const res = await signinAPI(form)
       axios.defaults.headers.common['X-AUTH-TOKEN'] = res.data.token
+      actions.setEmail(res.data.email)
+      actions.setUsername(res.data.username)
       msgRef.current.style.visibility = 'hidden'
       initForm()
-      history.goBack()
       setHasCookie(true)
     } catch {
       msgRef.current.style.visibility = 'visible'

@@ -1,13 +1,16 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useContext } from 'react'
 import classNames from 'classnames/bind'
 import WebViewer from '@pdftron/webviewer'
 
 import style from './PPTView.scss'
+import UserContext from 'contexts/user.js'
 
 const cx = classNames.bind(style)
 
-const PPTView = ({ PPT }) => {
-  const viewer = useRef(null)
+const PPTView = () => {
+  const { state } = useContext(UserContext)
+  const PPT = state.PPT
+  const viewerRef = useRef(null)
 
   useEffect(() => {
     ;(async () => {
@@ -17,7 +20,7 @@ const PPTView = ({ PPT }) => {
             path: '/lib',
             initialDoc: null,
           },
-          viewer.current
+          viewerRef.current
         )
         instance.loadDocument(PPT, { filename: PPT.filename })
         instance.disableFeatures([
@@ -65,7 +68,7 @@ const PPTView = ({ PPT }) => {
     })()
   }, [PPT])
 
-  return <div className={cx('PPTView')} ref={viewer} />
+  return <div className={cx('PPTView')} ref={viewerRef} />
 }
 
 export default PPTView

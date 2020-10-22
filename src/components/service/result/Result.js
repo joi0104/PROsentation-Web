@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 
 import Loading from 'components/service/result/Loading.js'
 import Analysis from 'components/service/result/Analysis.js'
 import { uploadVideoAPI } from 'api/http.js'
 import ErrorPopup from 'components/ErrorPopup.js'
+import UserContext from 'contexts/user.js'
 
-const Result = ({ serviceId, video }) => {
+const Result = () => {
+  const { state } = useContext(UserContext)
+  const { serviceId, video } = state
   const [error, setError] = useState(null)
   const [resultOK, setResultOK] = useState(false)
 

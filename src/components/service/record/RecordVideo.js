@@ -1,38 +1,39 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import classNames from 'classnames/bind'
 
-import style from './RecordingVideo.scss'
-import Popup from 'components/service/recording/Popup'
+import style from './RecordVideo.scss'
+import Popup from 'components/service/record/Popup'
 import Button from 'elements/Button.js'
-import Stopwatch from 'components/service/recording/Stopwatch.js'
+import Stopwatch from 'components/service/record/Stopwatch.js'
 
 const cx = classNames.bind(style)
 
 let mediaRecorder
 let recordedBlobs
 
-const RecordingVideo = ({
+const RecordVideo = ({
   recordingON,
   setRecordingON,
+  recordingOK,
   setRecordingOK,
-  setVideo,
+  setRecordOK,
 }) => {
-  const gumVideo = useRef()
-  const [popup, setPopup] = useState(false)
+  const videoRef = useRef()
 
   const constraints = {
-    audio: true,
+    audio: false,
     video: true,
   }
 
-  const onRecord = async () => {
+  const onRecord = () => {
     if (!recordingON) {
-      await startRecording()
-      await setRecordingON(true)
+      startRecording()
+      setRecordingON(true)
+      setRecordingOK(false)
     } else {
-      await stopRecording()
-      await setRecordingON(false)
-      setPopup(true)
+      stopRecording()
+      setRecordingON(false)
+      setRecordingOK(true)
     }
   }
 
@@ -82,7 +83,7 @@ const RecordingVideo = ({
       try {
         const stream = await navigator.mediaDevices.getUserMedia(constraints)
         window.stream = stream
-        gumVideo.current.srcObject = stream
+        videoRef.current.srcObject = stream
       } catch (err) {
         console.log(err)
       }
@@ -90,24 +91,23 @@ const RecordingVideo = ({
   })
 
   return (
-    <div className={cx('RecordingVideo')}>
-      <video ref={gumVideo} playsInline autoPlay />
+    <div className={cx('RecordVideo')}>
+      <video ref={videoRef} playsInline autoPlay />
       <Stopwatch state={recordingON} />
       {recordingON ? (
         <Button onClick={onRecord}>발표 완료하기</Button>
       ) : (
         <Button onClick={onRecord}>발표 시작하기</Button>
       )}
-      {popup ? (
+      {recordingOK ? (
         <Popup
           recordedBlobs={recordedBlobs}
+          setRecordOK={setRecordOK}
           setRecordingOK={setRecordingOK}
-          setVideo={setVideo}
-          setPopup={setPopup}
         />
       ) : null}
     </div>
   )
 }
 
-export default RecordingVideo
+export default RecordVideo

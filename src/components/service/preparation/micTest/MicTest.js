@@ -24,7 +24,7 @@ const MicTest = ({ setMicTestOK }) => {
         window.audioContext = new AudioContext()
         let stream = await navigator.mediaDevices.getUserMedia(constraints)
         await checkMeter(stream)
-        await setTestOK(true)
+        setTestOK(true)
       } catch (err) {
         console.log(err)
       }
