@@ -33,7 +33,7 @@ const Record = ({ setRecordOK }) => {
           )}
         </div>
         <div className={cx('content-wrapper')}>
-          <PPTView />
+          <PPTView recordingON={recordingON} recordingOK={recordingOK} />
           <RecordVideo
             setRecordingON={setRecordingON}
             setRecordingOK={setRecordingOK}

@@ -93,7 +93,7 @@ const RecordVideo = ({
   return (
     <div className={cx('RecordVideo')}>
       <video ref={videoRef} playsInline autoPlay />
-      <Stopwatch state={recordingON} />
+      <Stopwatch recordingON={recordingON} />
       {recordingON ? (
         <Button onClick={onRecord}>발표 완료하기</Button>
       ) : (

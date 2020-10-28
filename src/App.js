@@ -13,6 +13,7 @@ import FindEmail from 'pages/FindEmail.js'
 import FindPassword from 'pages/FindPassword.js'
 import Error from 'pages/Error.js'
 import { UserProvider } from 'contexts/user.js'
+import { AmountProvider } from 'contexts/amount.js'
 
 const cx = classNames.bind(style)
 
@@ -22,54 +23,60 @@ const App = () => {
   return (
     <div className={cx('App')}>
       <UserProvider>
-        <Navbar hasCookie={hasCookie} setHasCookie={setHasCookie} />
-        <Switch>
-          <Route
-            exact
-            path="/"
-            component={() => <Main hasCookie={hasCookie} />}
-          />
-          <Route
-            exact
-            path="/signin"
-            component={() =>
-              !hasCookie ? (
-                <Signin setHasCookie={setHasCookie} />
-              ) : (
-                <Redirect to="/" />
-              )
-            }
-          />
-          <Route
-            exact
-            path="/signup"
-            component={() => (!hasCookie ? <Signup /> : <Redirect to="/" />)}
-          />
-          <Route
-            exact
-            path="/find-email"
-            component={() => (!hasCookie ? <FindEmail /> : <Redirect to="/" />)}
-          />
-          <Route
-            exact
-            path="/find-password"
-            component={() =>
-              !hasCookie ? <FindPassword /> : <Redirect to="/" />
-            }
-          />
-          <Route
-            exact
-            path="/service"
-            component={() =>
-              hasCookie ? <Service /> : <Redirect to="/signin" />
-            }
-          />
-          <Route
-            path="/user"
-            component={() => (hasCookie ? <User /> : <Redirect to="/signin" />)}
-          />
-          <Route component={Error} />
-        </Switch>
+        <AmountProvider>
+          <Navbar hasCookie={hasCookie} setHasCookie={setHasCookie} />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              component={() => <Main hasCookie={hasCookie} />}
+            />
+            <Route
+              exact
+              path="/signin"
+              component={() =>
+                !hasCookie ? (
+                  <Signin setHasCookie={setHasCookie} />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/signup"
+              component={() => (!hasCookie ? <Signup /> : <Redirect to="/" />)}
+            />
+            <Route
+              exact
+              path="/find-email"
+              component={() =>
+                !hasCookie ? <FindEmail /> : <Redirect to="/" />
+              }
+            />
+            <Route
+              exact
+              path="/find-password"
+              component={() =>
+                !hasCookie ? <FindPassword /> : <Redirect to="/" />
+              }
+            />
+            <Route
+              exact
+              path="/service"
+              component={() =>
+                hasCookie ? <Service /> : <Redirect to="/signin" />
+              }
+            />
+            <Route
+              path="/user"
+              component={() =>
+                hasCookie ? <User /> : <Redirect to="/signin" />
+              }
+            />
+            <Route component={Error} />
+          </Switch>
+        </AmountProvider>
       </UserProvider>
     </div>
   )

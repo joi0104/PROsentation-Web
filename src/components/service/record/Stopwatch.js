@@ -9,11 +9,11 @@ const cx = classNames.bind(style)
 var runClock = null
 let counter = 0
 
-const Stopwatch = ({ state }) => {
+const Stopwatch = ({ recordingON }) => {
   const time = useRef()
 
   useEffect(() => {
-    if (state) {
+    if (recordingON) {
       runClock = setInterval(() => {
         counter++
         displayTime()
@@ -25,7 +25,7 @@ const Stopwatch = ({ state }) => {
       counter = 0
       displayTime()
     }
-  }, [state])
+  }, [recordingON])
 
   const displayTime = () => {
     time.current.innerHTML = moment()

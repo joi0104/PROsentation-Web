@@ -4,18 +4,54 @@ import WebViewer from '@pdftron/webviewer'
 
 import style from './PPTView.scss'
 import UserContext from 'contexts/user.js'
+import AmountContext from 'contexts/amount.js'
 
 const cx = classNames.bind(style)
 
-const PPTView = () => {
+var runClock = null
+let instance = null
+let counter = 0
+
+const PPTView = ({ recordingON, recordingOK }) => {
   const { state } = useContext(UserContext)
+  const { actions } = useContext(AmountContext)
   const PPT = state.PPT
-  const viewerRef = useRef(null)
+  const addAmount = actions.addAmount
+  const addLastAmount = actions.addLastAmount
+  const viewerRef = useRef()
+
+  useEffect(() => {
+    if (instance) {
+      instance.docViewer.on('pageComplete', (pageNumber, canvas) => {
+        if (recordingON) {
+          addAmount(pageNumber - 1, counter)
+        }
+        counter = 0
+      })
+    }
+
+    if (recordingOK) {
+      addLastAmount(counter)
+    }
+  }, [recordingON, recordingOK])
+
+  useEffect(() => {
+    if (recordingON) {
+      runClock = setInterval(() => {
+        counter++
+      }, 1000)
+    } else {
+      if (runClock) {
+        clearInterval(runClock)
+      }
+      counter = 0
+    }
+  }, [recordingON])
 
   useEffect(() => {
     ;(async () => {
       try {
-        const instance = await WebViewer(
+        instance = await WebViewer(
           {
             path: '/lib',
             initialDoc: null,
@@ -38,8 +74,8 @@ const PPTView = () => {
           'Copy',
           'MultipleViewerMerging',
           'ThumbnailMerging',
-          'ThumbnailReordering',
           'PageNavigation',
+          'ThumbnailReordering',
           'MouseWheelZoom',
         ])
         instance.disableElements([
@@ -66,7 +102,7 @@ const PPTView = () => {
         console.log(err)
       }
     })()
-  }, [PPT])
+  }, [])
 
   return <div className={cx('PPTView')} ref={viewerRef} />
 }
