@@ -16,7 +16,7 @@ const Signup = () => {
         <div className={cx('Signup-content')}>
           <SignupForm />
           <Line />
-          <Link to="/signin" style={{ textDecoration: 'none' }}>
+          <Link className={cx('go-to')} to="/signin">
             <Button2>로그인 하기</Button2>
           </Link>
         </div>

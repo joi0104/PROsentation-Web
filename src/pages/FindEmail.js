@@ -41,7 +41,7 @@ const FindEmail = () => {
             </Link>
           </div>
           <Line />
-          <Link to="/signup" style={{ textDecoration: 'none' }}>
+          <Link className={cx('go-to')} to="/signup">
             <Button2>간편가입하기</Button2>
           </Link>
         </div>
