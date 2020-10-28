@@ -33,6 +33,7 @@ const PPTView = ({ recordingON, recordingOK }) => {
     if (recordingOK) {
       addLastAmount(counter)
     }
+    // eslint-disable-next-line
   }, [recordingON, recordingOK])
 
   useEffect(() => {
@@ -102,6 +103,7 @@ const PPTView = ({ recordingON, recordingOK }) => {
         console.log(err)
       }
     })()
+    // eslint-disable-next-line
   }, [])
 
   return <div className={cx('PPTView')} ref={viewerRef} />

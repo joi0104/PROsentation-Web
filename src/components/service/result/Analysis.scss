@@ -1,0 +1,105 @@
+.Analysis {
+    width: 80%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 1130px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    position: relative;
+    display: flex;
+    align-self: start;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .Analysis-wrapper {
+        width: 90%;
+        height: 95%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        .Banner {
+            width: 100%;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .features {
+            width: 90%;
+            min-width: 970px;
+            height: 75%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-content: space-between;
+            .feature {
+                width: 310px;
+                height: 380px;
+                border-radius: 3px;
+                border: solid 1px #c7c7c8;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+
+                .title-wrapper {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    .title {
+                        font-family: NanumSquare;
+                        font-size: 14px;
+                        color: #000000;
+                    }
+                    .score {
+                        font-family: NanumSquare;
+                        font-size: 14px;
+                        color: #00cccc;
+    
+                    }
+                }
+
+                img {
+                    width: 24px;
+                    height: 24px;
+                    padding: 4px;
+                    object-fit: contain;
+                    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
+                    background-color: #ffffff;
+                    border-radius: 20px;
+                }
+
+                .graph {
+                    width: 240px;
+                    height: 140px;
+                }
+
+                .feedback {
+                    width: 260px;
+                    height: 110px;
+                    border-radius: 3px;
+                    padding: 10px 15px;
+                    overflow: scroll;
+                    background-color: rgba(244, 244, 244, 0.7);
+
+                    p {
+                        font-family: NanumSquare;
+                        font-size: 12px;
+                        line-height: 15px;
+                    }
+
+                    p + p {
+                        margin-top: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

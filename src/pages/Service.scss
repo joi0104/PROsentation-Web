@@ -1,6 +1,7 @@
 .Service {
     width: 100%;
-    height: 92%;
+    min-height: 92%;
+    overflow: scroll;
     display: flex;
     align-items: center;
     justify-content: center;
