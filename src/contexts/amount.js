@@ -15,10 +15,12 @@ const AmountProvider = ({ children }) => {
 
   const addAmount = (pageNumber, counter) => {
     const page = pageNumber.toString()
-    setAmount((preAmount) => ({
-      ...preAmount,
-      [page]: counter,
-    }))
+    if (counter) {
+      setAmount((preAmount) => ({
+        ...preAmount,
+        [page]: counter,
+      }))
+    }
   }
 
   const addLastAmount = (counter) => {
