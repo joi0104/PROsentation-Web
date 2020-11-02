@@ -35,9 +35,6 @@ const ProfileDropdown = ({ setShowDropdown, setHasCookie }) => {
         <Link className={cx('myinfo')} to="/user/myinfo">
           나의 정보
         </Link>
-        <Link className={cx('myvideo')} to="/user/myvedio">
-          나의 발표영상
-        </Link>
         <Link className={cx('premium')} to="/user/premium">
           프리미엄 서비스
         </Link>
