@@ -10,20 +10,9 @@ import iconCam from 'assets/icons/icon-cam-green.png'
 
 const cx = classNames.bind(style)
 
-const CheckItems = ({ PPTUploadOK, micTestOK, camTestOK }) => {
+const CheckItems = ({ micTestOK, camTestOK, PPTUploadOK }) => {
   return (
     <div className={cx('CheckItems')}>
-      <div className={cx('PPTupload')}>
-        {PPTUploadOK ? (
-          <img src={iconCheckroundActive} alt="active" />
-        ) : (
-          <img src={iconCheckroundInactive} alt="inactive" />
-        )}
-        <div>
-          <img src={iconPPTadd} alt="pptadd" />
-        </div>
-        <p>발표자료 업로드</p>
-      </div>
       <div className={cx('micTest')}>
         {micTestOK ? (
           <img src={iconCheckroundActive} alt="active" />
@@ -45,6 +34,17 @@ const CheckItems = ({ PPTUploadOK, micTestOK, camTestOK }) => {
           <img src={iconCam} alt="cam" />
         </div>
         <p>웹캠 연결</p>
+      </div>
+      <div className={cx('PPTupload')}>
+        {PPTUploadOK ? (
+          <img src={iconCheckroundActive} alt="active" />
+        ) : (
+          <img src={iconCheckroundInactive} alt="inactive" />
+        )}
+        <div>
+          <img src={iconPPTadd} alt="pptadd" />
+        </div>
+        <p>발표자료 업로드</p>
       </div>
     </div>
   )

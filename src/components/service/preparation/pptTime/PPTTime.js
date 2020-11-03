@@ -8,7 +8,7 @@ import UserContext from 'contexts/user.js'
 
 const cx = classNames.bind(style)
 
-const PPTTime = ({ setChoicePPTTime }) => {
+const PPTTime = ({ setPreparationOK }) => {
   const [testOK, setTestOK] = useState(false)
   const { actions } = useContext(UserContext)
   const setTime = actions.setTime
@@ -20,7 +20,7 @@ const PPTTime = ({ setChoicePPTTime }) => {
 
   const goNext = () => {
     if (testOK) {
-      setChoicePPTTime(true)
+      setPreparationOK(true)
     } else {
       alert('발표 시간을 선택해주세요!')
     }

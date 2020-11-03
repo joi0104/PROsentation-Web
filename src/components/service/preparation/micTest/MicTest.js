@@ -64,9 +64,9 @@ const MicTest = ({ setMicTestOK }) => {
   return (
     <div className={cx('MicTest')}>
       <Description>
-        가이드 선 안에 얼굴을 위치 시키고 체크시작 버튼을 누르면 타이머가
-        나옵니다. 5초의 타이머가 나오는 동시에 아래 문장으로 소리 내어
-        읽어주세요.
+        마이크의 권한과 음량을 테스트 합니다. 마이크 권한 설정을 허용해주세요.
+        아래의 문장을 읽기도 전에 테스트를 통과하셨다면, 좀 더 조용한 곳으로
+        이동해주세요.
       </Description>
       <div className={cx('content-wrapper')}>
         <p className={cx('script')}>안녕하세요, 만나서 반갑습니다!</p>

@@ -16,21 +16,21 @@ const PreparationNavbar = ({ micTestOK, camTestOK, PPTUploadOK }) => {
   return (
     <div className={cx('PreparationNavbar')}>
       <ActiveBox
-        active={PPTUploadOK}
-        activeImg={iconPPTaddActive}
-        inactiveImg={iconPPTaddInactive}
-      />
-      <div className={cx('pptadd-mic-bar')} />
-      <ActiveBox
         active={micTestOK}
         activeImg={iconMicActive}
         inactiveImg={iconMicInactive}
       />
-      <div className={cx('mic-cam-bar')} />
+      <div className={cx('bar')} />
       <ActiveBox
         active={camTestOK}
         activeImg={iconCamActive}
         inactiveImg={iconCamInactive}
+      />
+      <div className={cx('bar')} />
+      <ActiveBox
+        active={PPTUploadOK}
+        activeImg={iconPPTaddActive}
+        inactiveImg={iconPPTaddInactive}
       />
     </div>
   )
