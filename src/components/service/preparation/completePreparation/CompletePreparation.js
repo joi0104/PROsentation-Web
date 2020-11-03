@@ -8,9 +8,9 @@ import Button from 'elements/Button.js'
 
 const cx = classNames.bind(style)
 
-const CompletePreparation = ({ setPreparationOK }) => {
+const CompletePreparation = ({ setCompleteOK }) => {
   const goNext = () => {
-    setPreparationOK(true)
+    setCompleteOK(true)
   }
 
   return (

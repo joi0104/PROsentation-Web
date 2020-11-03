@@ -9,14 +9,16 @@ import CamTest from 'components/service/preparation/camTest/CamTest.js'
 import PPTUpload from 'components/service/preparation/pptUpload/PPTUpload.js'
 import CompletePreparation from 'components/service/preparation/completePreparation/CompletePreparation.js'
 import Banner from 'elements/Banner.js'
+import PPTTime from 'components/service/preparation/pptTime/PPTTime.js'
 
 const cx = classNames.bind(style)
 
 const Preparation = ({ setPreparationOK }) => {
-  const [checkItemsOK, setCheckItemsOK] = useState(false)
+  const [startOK, setStartOK] = useState(false)
   const [micTestOK, setMicTestOK] = useState(false)
   const [camTestOK, setCamTestOK] = useState(false)
   const [PPTUploadOK, setPPTUploadOK] = useState(false)
+  const [completeOK, setCompleteOK] = useState(false)
 
   return (
     <div className={cx('Preparation')}>
@@ -29,16 +31,18 @@ const Preparation = ({ setPreparationOK }) => {
         <Banner>발표 준비하기</Banner>
 
         <div className={cx('content')}>
-          {!checkItemsOK ? (
-            <StartPreparation setCheckItemsOK={setCheckItemsOK} />
+          {!startOK ? (
+            <StartPreparation setStartOK={setStartOK} />
           ) : !micTestOK ? (
             <MicTest setMicTestOK={setMicTestOK} />
           ) : !camTestOK ? (
             <CamTest setCamTestOK={setCamTestOK} />
           ) : !PPTUploadOK ? (
             <PPTUpload setPPTUploadOK={setPPTUploadOK} />
+          ) : !completeOK ? (
+            <CompletePreparation setCompleteOK={setCompleteOK} />
           ) : (
-            <CompletePreparation setPreparationOK={setPreparationOK} />
+            <PPTTime setPreparationOK={setPreparationOK} />
           )}
         </div>
       </div>

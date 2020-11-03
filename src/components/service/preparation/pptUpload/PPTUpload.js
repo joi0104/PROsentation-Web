@@ -47,7 +47,7 @@ const PPTUpload = ({ setPPTUploadOK }) => {
   return (
     <div className={cx('PPTUpload')}>
       {error ? <ErrorPopup error={error} /> : null}
-      <Description>우선, 발표자료를 업로드 해주세요.</Description>
+      <Description>마지막으로, 발표자료를 업로드 해주세요.</Description>
       {uploadingOK || uploadingON ? (
         uploadingON ? (
           <div className={cx('input-wrapper')}>

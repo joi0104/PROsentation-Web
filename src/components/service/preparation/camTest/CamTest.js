@@ -45,9 +45,8 @@ const CamTest = ({ setCamTestOK }) => {
   return (
     <div className={cx('CamTest')}>
       <Description>
-        가이드 선 안에 얼굴을 위치 시키고 체크시작 버튼을 누르면 타이머가
-        나옵니다.5초의 타이머가 나오는 동시에 아래 문장으로 소리 내어
-        읽어주세요.
+        카메라의 연결을 확인합니다. 카메라 권한 설정을 허용해주세요. 단조로운
+        배경에서 촬영할수록 분석이 더욱 정확해져요.
       </Description>
       <div className={cx('content-wrapper')}>
         <video ref={video} autoPlay playsInline poster={iconNoCam} />

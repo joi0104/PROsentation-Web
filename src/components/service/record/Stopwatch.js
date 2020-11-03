@@ -1,45 +1,57 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useContext, useState } from 'react'
 import classNames from 'classnames/bind'
 import moment from 'moment'
 
 import style from './Stopwatch.scss'
+import UserContext from 'contexts/user.js'
+import TimePopup from 'components/service/record/TimePopup.js'
 
 const cx = classNames.bind(style)
 
-var runClock = null
-let counter = 0
+let runClock = null
 
 const Stopwatch = ({ recordingON }) => {
-  const time = useRef()
+  const timeRef = useRef()
+  const [counter, setCounter] = useState(0)
+  const { state } = useContext(UserContext)
+  const time = state.time
+  const intro = time * 0.2
+  const finish = time * 0.9
 
   useEffect(() => {
     if (recordingON) {
       runClock = setInterval(() => {
-        counter++
-        displayTime()
+        setCounter((preCounter) => preCounter + 1)
       }, 1000)
     } else {
       if (runClock) {
         clearInterval(runClock)
       }
-      counter = 0
-      displayTime()
+      setCounter(0)
     }
   }, [recordingON])
 
-  const displayTime = () => {
-    time.current.innerHTML = moment()
+  useEffect(() => {
+    timeRef.current.innerHTML = moment()
       .hour(0)
       .minute(0)
       .second(counter)
       .format('HH : mm : ss')
-  }
+  }, [counter])
 
   return (
     <div className={cx('Stopwatch')}>
       <p className={cx('title')}>발표 시간</p>
-      <div className={cx('time')} ref={time}></div>
+      <div className={cx('time')} ref={timeRef}></div>
       <div className={cx('line')} />
+      {intro * 60 <= counter && counter < intro * 60 + 7 ? (
+        <TimePopup>
+          {intro}분이 지났어요. 슬슬 본문으로 넘어가 볼까요?
+        </TimePopup>
+      ) : null}
+      {finish * 60 <= counter && counter < finish * 60 + 7 ? (
+        <TimePopup>{finish}분이 지났어요. 마무리를 할 시간이에요.</TimePopup>
+      ) : null}
     </div>
   )
 }

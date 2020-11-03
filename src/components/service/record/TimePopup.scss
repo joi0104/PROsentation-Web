@@ -1,0 +1,27 @@
+.TimePopup {
+    position: absolute;
+    top: 100px;
+    right: -350px;
+    width: 330px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fa6462;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    animation: fadeinout 7s;
+    font-family: NanumSquare;
+}
+@keyframes fadeinout {
+    0% {
+        right: -330px;
+    }
+    50% {
+        right: 0;
+    }
+    100% {
+        right: -330px;
+    }
+}

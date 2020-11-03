@@ -8,9 +8,9 @@ import Button from 'elements/Button.js'
 
 const cx = classNames.bind(style)
 
-const StartPreparation = ({ setCheckItemsOK }) => {
+const StartPreparation = ({ setStartOK }) => {
   const goNext = () => {
-    setCheckItemsOK(true)
+    setStartOK(true)
   }
   return (
     <div className={cx('StartPreparation')}>
