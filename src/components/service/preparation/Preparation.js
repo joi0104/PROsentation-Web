@@ -9,6 +9,7 @@ import CamTest from 'components/service/preparation/camTest/CamTest.js'
 import PPTUpload from 'components/service/preparation/pptUpload/PPTUpload.js'
 import CompletePreparation from 'components/service/preparation/completePreparation/CompletePreparation.js'
 import Banner from 'elements/Banner.js'
+import PPTTime from 'components/service/preparation/pptTime/PPTTime.js'
 
 const cx = classNames.bind(style)
 
@@ -17,6 +18,7 @@ const Preparation = ({ setPreparationOK }) => {
   const [micTestOK, setMicTestOK] = useState(false)
   const [camTestOK, setCamTestOK] = useState(false)
   const [PPTUploadOK, setPPTUploadOK] = useState(false)
+  const [choiceTimeOK, setChoiceTimeOK] = useState(false)
 
   return (
     <div className={cx('Preparation')}>
@@ -37,6 +39,8 @@ const Preparation = ({ setPreparationOK }) => {
             <CamTest setCamTestOK={setCamTestOK} />
           ) : !PPTUploadOK ? (
             <PPTUpload setPPTUploadOK={setPPTUploadOK} />
+          ) : !choiceTimeOK ? (
+            <PPTTime setChoiceTimeOK={setChoiceTimeOK} />
           ) : (
             <CompletePreparation setPreparationOK={setPreparationOK} />
           )}
