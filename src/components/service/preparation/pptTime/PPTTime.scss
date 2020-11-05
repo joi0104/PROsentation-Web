@@ -10,38 +10,76 @@
         width: 80%;
         height: 40%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
         align-items: center;
 
-        button {
-            max-width: 300px;
-            max-height: 45px;
-            width: 20%;
-            height: auto;
-            padding: 10px 0px;
-            border-radius: 100px;
-            border: 1px solid #00cccc;
-            font-family: NanumSquare;
-            font-size: 18px;
-            font-weight: bold;
-            color: #00cccc;
+        .content-select-time {
+            width: 100%;
             display: flex;
-            justify-content: center;
+            flex-direction: row;
+            justify-content: space-between;
             align-items: center;
-            background-color: white;
-            margin: 0;
+            
+            button {
+                max-width: 300px;
+                max-height: 45px;
+                width: 20%;
+                height: auto;
+                padding: 10px 0px;
+                border-radius: 100px;
+                border: 1px solid #00cccc;
+                font-family: NanumSquare;
+                font-size: 18px;
+                font-weight: bold;
+                color: #00cccc;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: white;
+                margin: 0;
+            }
+
+            button:hover {
+                background-color:  #00cccc;
+                color: white;
+            }
+
+            button:focus {
+                background-color:  #00cccc;
+                color: white;
+
+            }
         }
 
-        button:hover {
-            background-color:  #00cccc;
-            color: white;
-        }
+        .content-select-popup {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
 
-        button:focus {
-            background-color:  #00cccc;
-            color: white;
+            input[id="popup-checkbox"] {
+                display: none;
+            }
 
+            input[id="popup-checkbox"] + label {
+                width: 20px;
+                height: 20px;
+                background: url('../../../../assets/icons/icon-checkround.png') no-repeat center/20px 20px;
+                cursor: pointer;
+            }
+            input[id="popup-checkbox"]:checked + label {
+                background: url('../../../../assets/icons/icon-checkround-green.png') no-repeat center/20px 20px;
+            }
+
+            label {
+                margin-right: 10px;
+            }
+
+            p {
+                font-family: NanumSquare;
+                font-size: 15px;
+            }
         }
     }
 }

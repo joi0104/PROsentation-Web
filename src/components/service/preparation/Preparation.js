@@ -13,7 +13,7 @@ import PPTTime from 'components/service/preparation/pptTime/PPTTime.js'
 
 const cx = classNames.bind(style)
 
-const Preparation = ({ setPreparationOK }) => {
+const Preparation = ({ setPreparationOK, setPopupOK }) => {
   const [startOK, setStartOK] = useState(false)
   const [micTestOK, setMicTestOK] = useState(false)
   const [camTestOK, setCamTestOK] = useState(false)
@@ -42,7 +42,10 @@ const Preparation = ({ setPreparationOK }) => {
           ) : !completeOK ? (
             <CompletePreparation setCompleteOK={setCompleteOK} />
           ) : (
-            <PPTTime setPreparationOK={setPreparationOK} />
+            <PPTTime
+              setPreparationOK={setPreparationOK}
+              setPopupOK={setPopupOK}
+            />
           )}
         </div>
       </div>
