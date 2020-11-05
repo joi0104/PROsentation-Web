@@ -5,7 +5,6 @@ import style from './PPTTime.scss'
 import Button from 'elements/Button.js'
 import Description from 'elements/Description.js'
 import UserContext from 'contexts/user.js'
-import { check } from 'prettier'
 
 const cx = classNames.bind(style)
 
@@ -15,7 +14,6 @@ const PPTTime = ({ setPreparationOK, setPopupOK }) => {
   const setTime = actions.setTime
 
   const onChange = (e) => {
-    alert(e.target.checked)
     setPopupOK(e.target.checked)
   }
 

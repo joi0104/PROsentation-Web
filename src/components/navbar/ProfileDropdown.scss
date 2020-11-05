@@ -8,6 +8,7 @@
     right: 0;
     display: flex;
     flex-direction: column;
+    z-index: 1000;
     .jumbotron {
         height: 60%;
         background-color: #f3f3f9;
@@ -18,7 +19,7 @@
             height: 24px;
             object-fit: contain;
             align-self: flex-end;
-            margin: 16px 16px 0 0;
+            margin: 12px 16px 0 0;
         }
         img[alt="icon-user"] {
             width: 48px;
