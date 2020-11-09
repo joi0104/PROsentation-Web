@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 
 import Loading from 'components/service/result/Loading.js'
 import Analysis from 'components/service/result/Analysis.js'
+import Matching from 'components/service/result/Matching.js'
 import { uploadVideoAPI } from 'api/http.js'
 import ErrorPopup from 'components/ErrorPopup.js'
 import UserContext from 'contexts/user.js'
@@ -11,6 +12,7 @@ const Result = () => {
   const { serviceId, video } = state
   const [error, setError] = useState(null)
   const [resultOK, setResultOK] = useState(false)
+  const [matchingOK, setMachingOK] = useState(false)
 
   useEffect(() => {
     ;(async () => {
@@ -28,8 +30,10 @@ const Result = () => {
 
   return error ? (
     <ErrorPopup error={error} />
+  ) : matchingOK ? (
+    <Matching />
   ) : resultOK ? (
-    <Analysis />
+    <Analysis setMachingOK={setMachingOK} />
   ) : (
     <Loading />
   )

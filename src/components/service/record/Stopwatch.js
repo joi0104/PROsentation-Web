@@ -44,12 +44,12 @@ const Stopwatch = ({ recordingON, popupOK }) => {
       <p className={cx('title')}>발표 시간</p>
       <div className={cx('time')} ref={timeRef}></div>
       <div className={cx('line')} />
-      {10 <= counter && popupOK ? (
+      {intro * 60 <= counter && popupOK ? (
         <TimePopup>
           {intro}분이 지났어요. 슬슬 본문으로 넘어가 볼까요?
         </TimePopup>
       ) : null}
-      {20 <= counter && popupOK ? (
+      {finish * 60 <= counter && popupOK ? (
         <TimePopup>{finish}분이 지났어요. 마무리를 할 시간이에요.</TimePopup>
       ) : null}
     </div>
