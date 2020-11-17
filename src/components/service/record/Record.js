@@ -11,7 +11,7 @@ import UserContext from 'contexts/user.js'
 
 const cx = classNames.bind(style)
 
-const Record = ({ setRecordOK }) => {
+const Record = ({ setRecordOK, popupOK }) => {
   const { state } = useContext(UserContext)
   const [recordingON, setRecordingON] = useState(false)
   const [recordingOK, setRecordingOK] = useState(false)
@@ -40,6 +40,7 @@ const Record = ({ setRecordOK }) => {
             setRecordOK={setRecordOK}
             recordingON={recordingON}
             recordingOK={recordingOK}
+            popupOK={popupOK}
           />
         </div>
       </div>

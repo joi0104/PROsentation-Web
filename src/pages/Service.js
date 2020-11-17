@@ -17,6 +17,7 @@ const Service = () => {
   const [error, setError] = useState(null)
   const [preparationOK, setPreparationOK] = useState(false)
   const [recordOK, setRecordOK] = useState(false)
+  const [popupOK, setPopupOK] = useState(true)
 
   useEffect(() => {
     ;(async () => {
@@ -34,9 +35,12 @@ const Service = () => {
     <div className={cx('Service')}>
       {error ? <ErrorPopup error={error} /> : null}
       {!preparationOK ? (
-        <Preparation setPreparationOK={setPreparationOK} />
+        <Preparation
+          setPreparationOK={setPreparationOK}
+          setPopupOK={setPopupOK}
+        />
       ) : !recordOK ? (
-        <Record setRecordOK={setRecordOK} />
+        <Record setRecordOK={setRecordOK} popupOK={popupOK} />
       ) : (
         <Result />
       )}

@@ -1,26 +1,27 @@
 import React, { useContext } from 'react'
 import classNames from 'classnames/bind'
+import { Link } from 'react-router-dom'
 
 import style from './Analysis.scss'
 import AmountContext from 'contexts/amount.js'
 import Banner from 'elements/Banner.js'
-import Summary from 'components/service/result/Summary.js'
 import iconSpeed from 'assets/icons/icon-speed.png'
 import iconAmount from 'assets/icons/icon-amount.png'
 import iconPronunciation from 'assets/icons/icon-pronunciation.png'
 import iconEmotion from 'assets/icons/icon-emotion.png'
 import iconTopic from 'assets/icons/icon-topic.png'
 import iconDependency from 'assets/icons/icon-dependency.png'
+import Button from 'elements/Button.js'
+import Button2 from 'elements/Button2.js'
 
 const cx = classNames.bind(style)
 
-const Analysis = () => {
+const Analysis = ({ setMachingOK }) => {
   const { state } = useContext(AmountContext)
   return (
     <div className={cx('Analysis')}>
       <div className={cx('Analysis-wrapper')}>
         <Banner>나의 발표 분석 결과표</Banner>
-        <Summary />
         <div className={cx('features')}>
           <div className={cx('feature', 'speed')}>
             <img src={iconSpeed} alt="icon-speed" />
@@ -155,6 +156,18 @@ const Analysis = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className={cx('buttons')}>
+        <Link className={cx('go-to')} to="/">
+          <Button2>메인으로 돌아가기</Button2>
+        </Link>
+        <Button
+          onClick={() => {
+            setMachingOK(true)
+          }}
+        >
+          전문가에게 피드백 받기
+        </Button>
       </div>
     </div>
   )

@@ -17,6 +17,7 @@ const RecordVideo = ({
   recordingOK,
   setRecordingOK,
   setRecordOK,
+  popupOK,
 }) => {
   const videoRef = useRef()
 
@@ -93,7 +94,7 @@ const RecordVideo = ({
   return (
     <div className={cx('RecordVideo')}>
       <video ref={videoRef} playsInline autoPlay />
-      <Stopwatch recordingON={recordingON} />
+      <Stopwatch recordingON={recordingON} popupOK={popupOK} />
       {recordingON ? (
         <Button onClick={onRecord}>발표 완료하기</Button>
       ) : (
