@@ -63,22 +63,26 @@ const MyInfo = () => {
           <div className={cx('MyInfo-premium')}>
             <div className={cx('MyInfo-content')}>
               <p className={cx('MyInfo-content-title')}>구매정보</p>
-              <p className={cx('MyInfo-content-des')}>하나카드</p>
+              <p className={cx('MyInfo-content-des')}>
+                신한카드 4364-2007-****-****
+              </p>
               <button className={cx('MyInfo-content-button')}>변경하기</button>
             </div>
             <div className={cx('MyInfo-content')}>
               <p className={cx('MyInfo-content-title')}>구매현황</p>
-              <p className={cx('MyInfo-content-des')}>프리미엄 정기권</p>
+              <p className={cx('MyInfo-content-des')}>프리미엄 1회권</p>
               <button className={cx('MyInfo-content-button')}>해지하기</button>
             </div>
             <div className={cx('MyInfo-content')}>
               <p className={cx('MyInfo-content-title')}>결제일시</p>
-              <p className={cx('MyInfo-content-des')}>abc</p>
+              <p className={cx('MyInfo-content-des')}>2020-10-01</p>
               <button className={cx('no-button')} disabled />
             </div>
             <div className={cx('MyInfo-content')}>
               <p className={cx('MyInfo-content-title')}>회원탈퇴</p>
-              <p className={cx('MyInfo-content-des')}>그런건 없습니다</p>
+              <p className={cx('MyInfo-content-des')}>
+                정말로 탈퇴하시게요? ㅠㅠ
+              </p>
               <button className={cx('MyInfo-content-button')}>탈퇴하기</button>
             </div>
           </div>

@@ -12,7 +12,7 @@ const Main = ({ hasCookie }) => {
   return (
     <div className={cx('Main')}>
       <PremiumNavbar />
-      <p className={cx('Main-title')}>나만을 위한 발표 솔루션, PROSENTATION</p>
+      <p className={cx('Main-title')}>프레젠테이션을 프로답게, PROSENTATION</p>
       <p className={cx('Main-description')}>
         프로처럼 멋지게 발표하고 싶을 때는 프로젠테이션!
       </p>

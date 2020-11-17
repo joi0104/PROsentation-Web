@@ -47,6 +47,9 @@ const PPTTime = ({ setPreparationOK, setPopupOK }) => {
           <button value={20} onClick={onClick}>
             20분
           </button>
+          <button value={30} onClick={onClick}>
+            직접입력
+          </button>
         </div>
         <div className={cx('content-select-popup')}>
           <input
