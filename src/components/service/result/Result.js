@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import Loading from 'components/service/result/Loading.js'
 import Analysis from 'components/service/result/Analysis.js'
 import Matching from 'components/service/result/Matching.js'
-import { uploadVideoAPI } from 'api/http.js'
+import { uploadVideoAPI, getAnalysisAPI } from 'api/http.js'
 import ErrorPopup from 'components/ErrorPopup.js'
 import UserContext from 'contexts/user.js'
 
@@ -17,13 +17,17 @@ const Result = () => {
   useEffect(() => {
     ;(async () => {
       try {
-        const form = new FormData()
-        form.append('media', new Blob(video, { type: 'video/webm' }))
-        form.append('serviceId', serviceId)
-        await uploadVideoAPI(form)
-        setResultOK(true)
+        //const form = new FormData()
+        //form.append('media', new Blob(video, { type: 'video/webm' }))
+        //form.append('serviceId', serviceId)
+        //await uploadVideoAPI(form)
+        //const tmp = await getAnalysisAPI(serviceId)
+        //alert(JSON.stringify(tmp))
+        setInterval(() => {
+          setResultOK(true)
+        }, 10000)
       } catch (error) {
-        setError(error)
+        //setError(error)
       }
     })()
   }, [video, serviceId])

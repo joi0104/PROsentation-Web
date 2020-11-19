@@ -24,7 +24,6 @@ const Service = () => {
       try {
         const res = await init()
         setServiceId(res.data.serviceId)
-        alert(res.data.serviceId)
       } catch (error) {
         setError(error)
       }

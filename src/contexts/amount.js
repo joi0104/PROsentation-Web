@@ -3,15 +3,20 @@ import React, { createContext, useState } from 'react'
 const AmountContext = createContext({
   state: {
     amount: {},
+    totalAmount: 0,
+    time: 0,
   },
   actions: {
     addAmount: () => {},
     addLastAmount: () => {},
+    setTime: () => {},
   },
 })
 
 const AmountProvider = ({ children }) => {
   const [amount, setAmount] = useState({})
+  const [time, setTime] = useState(0)
+  const [totalAmount, setTotalAmount] = useState(0)
 
   const addAmount = (pageNumber, counter) => {
     const page = pageNumber.toString()
@@ -20,6 +25,7 @@ const AmountProvider = ({ children }) => {
         ...preAmount,
         [page]: counter,
       }))
+      setTotalAmount((preAmount) => preAmount + counter)
     }
   }
 
@@ -30,11 +36,12 @@ const AmountProvider = ({ children }) => {
       ...preAmount,
       [page]: counter,
     }))
+    setTotalAmount((preAmount) => preAmount + counter)
   }
 
   const value = {
-    state: { amount },
-    actions: { addAmount, addLastAmount },
+    state: { amount, time, totalAmount },
+    actions: { addAmount, addLastAmount, setTime },
   }
 
   return (

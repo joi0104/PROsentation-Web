@@ -26,7 +26,9 @@ const CamTest = ({ setCamTestOK }) => {
         video.current.srcObject = stream
         video.current.onloadedmetadata = (e) => {
           video.current.play()
-          setTestOK(true)
+          setInterval(() => {
+            setTestOK(true)
+          }, 1000)
         }
       } catch (err) {
         console.log(err)

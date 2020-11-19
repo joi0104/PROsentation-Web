@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://test-server.team-jyb.com:8080'
+axios.defaults.baseURL = 'http://prosentation.net:8080'
 
 export const signupAPI = (form) => axios.post('/user/signup', form)
 
@@ -24,3 +24,10 @@ export const uploadVideoAPI = (form) => {
     },
   })
 }
+
+export const getAnalysisAPI = (serviceId) =>
+  axios.get('/presentation/result', {
+    params: {
+      service_id: serviceId,
+    },
+  })
