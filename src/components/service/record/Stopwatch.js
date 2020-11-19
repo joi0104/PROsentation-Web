@@ -3,7 +3,7 @@ import classNames from 'classnames/bind'
 import moment from 'moment'
 
 import style from './Stopwatch.scss'
-import UserContext from 'contexts/user.js'
+import AmountContext from 'contexts/amount.js'
 import TimePopup from 'components/service/record/TimePopup.js'
 
 const cx = classNames.bind(style)
@@ -13,8 +13,8 @@ let runClock = null
 const Stopwatch = ({ recordingON, popupOK }) => {
   const timeRef = useRef()
   const [counter, setCounter] = useState(0)
-  const { state } = useContext(UserContext)
-  const time = state.time
+  const { state } = useContext(AmountContext)
+  const time = state.time / 60
   const intro = time * 0.2
   const finish = time * 0.9
 

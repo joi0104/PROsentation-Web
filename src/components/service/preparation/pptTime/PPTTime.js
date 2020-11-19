@@ -4,13 +4,13 @@ import classNames from 'classnames/bind'
 import style from './PPTTime.scss'
 import Button from 'elements/Button.js'
 import Description from 'elements/Description.js'
-import UserContext from 'contexts/user.js'
+import AmountContext from 'contexts/amount.js'
 
 const cx = classNames.bind(style)
 
 const PPTTime = ({ setPreparationOK, setPopupOK }) => {
   const [testOK, setTestOK] = useState(false)
-  const { actions } = useContext(UserContext)
+  const { actions } = useContext(AmountContext)
   const setTime = actions.setTime
 
   const onChange = (e) => {
@@ -35,19 +35,19 @@ const PPTTime = ({ setPreparationOK, setPopupOK }) => {
       <Description>발표 시간을 선택해주세요.</Description>
       <div className={cx('content-wrapper')}>
         <div className={cx('content-select-time')}>
-          <button value={5} onClick={onClick}>
+          <button value={5 * 60} onClick={onClick}>
             5분
           </button>
-          <button value={10} onClick={onClick}>
+          <button value={10 * 60} onClick={onClick}>
             10분
           </button>
-          <button value={15} onClick={onClick}>
+          <button value={15 * 60} onClick={onClick}>
             15분
           </button>
-          <button value={20} onClick={onClick}>
+          <button value={20 * 60} onClick={onClick}>
             20분
           </button>
-          <button value={30} onClick={onClick}>
+          <button value={30 * 60} onClick={onClick}>
             직접입력
           </button>
         </div>
@@ -58,7 +58,7 @@ const PPTTime = ({ setPreparationOK, setPopupOK }) => {
             onChange={onChange}
             defaultChecked
           />
-          <label for="popup-checkbox"></label>
+          <label htmlFor="popup-checkbox"></label>
           <p>
             AI가 최적의 인트로 시간과 마무리 시간을 제시해줘요. 원하시지
             않으시면 체크박스를 해제해주세요.

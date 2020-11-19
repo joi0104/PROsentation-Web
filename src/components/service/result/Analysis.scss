@@ -1,5 +1,5 @@
 .Analysis {
-    width: 80%;
+    width: 95%;
     margin-top: 50px;
     margin-bottom: 50px;
     height: 1130px;
@@ -12,7 +12,7 @@
     align-items: center;
 
     .Analysis-wrapper {
-        width: 90%;
+        width: 98%;
         height: 950px;
         display: flex;
         flex-direction: column;
@@ -24,7 +24,9 @@
         }
 
         p {
+            font-family: NanumSquare;
             margin: 0;
+            word-break: keep-all;
         }
 
         .features {
@@ -36,12 +38,19 @@
             justify-content: space-between;
             flex-wrap: wrap;
             align-content: space-between;
+
+            .blank {
+                width: 140px;
+                height: 360px;
+            }
+
             .feature {
-                width: 310px;
-                height: 380px;
+                width: 280px;
+                height: 360px;
                 border-radius: 3px;
                 border: solid 1px #c7c7c8;
                 display: flex;
+                padding: 5px;
                 flex-direction: column;
                 justify-content: space-around;
                 align-items: center;
@@ -76,28 +85,222 @@
                 }
 
                 .graph {
-                    width: 240px;
-                    height: 140px;
+                    width: 250px;
+                    padding: 10px;
+                    height: 120px;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    flex-direction: column;
+                    border: rgba(12, 224, 156, 0.35) 1px solid;
+                    background-color: rgba(12, 224, 156, 0.03);
+                    .graph-title {
+                        font-size: 12px;
+                        line-height: 24px;
+                        font-weight: bold;
+                        align-self: start;
+                    }
+                    .graph-des {
+                        font-size: 11px;
+                        color: #0CE09C;
+                        line-height: 15px;
+                        text-align: center;
+                    }
                 }
 
                 .feedback {
-                    width: 260px;
-                    height: 110px;
+                    width: 250px;
+                    height: 100px;
                     border-radius: 3px;
-                    padding: 10px 15px;
+                    padding: 10px;
                     overflow: scroll;
                     background-color: rgba(244, 244, 244, 0.7);
 
                     p {
-                        font-family: NanumSquare;
                         font-size: 12px;
-                        line-height: 15px;
+                        line-height: 22px;
+                        word-break: normal;
                     }
 
                     p + p {
                         margin-top: 10px;
                     }
+
+                    span {
+                        font-size: 12px;
+                        line-height: 22px;
+                        font-family: NanumSquare;
+                        margin: 0;
+                        color: #0CE09C;
+                    }
                 }
+            }
+            .speed {
+                .graph {
+                    .data {
+                        font-size: 35px;
+                        line-height: 20px;
+                        font-weight: bold;
+                        color: #0CE09C;
+                    }
+                }
+            }
+
+            .time-amount {
+                .time {
+                    height: 80px;
+                    border: rgba(179, 235, 248, 1) 1px solid;
+                    background-color: rgba(179, 235, 248, 0.1);
+                    .data-wrapper {
+                        display: flex;
+                        flex-direction: row;
+                        .current {
+                            display: flex;
+                            flex-direction: column;
+                            .data {
+                                width: 109px;
+                                height: 40px;
+                                font-size: 30px;
+                                font-weight: bold;
+                                line-height: 20px;
+                                color: #00CCCC;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                            .data-des {
+                                width: 109px;
+                                font-size: 11px;
+                                color: #00CCCC;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                        }
+                        .goal {
+                            display: flex;
+                            flex-direction: column;
+                            .data {
+                                width: 109px;
+                                height: 40px;
+                                font-size: 30px;
+                                font-weight: bold;
+                                line-height: 20px;
+                                color: #808083;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                            .data-des {
+                                width: 109px;
+                                font-size: 11px;
+                                color: #808083;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                            }
+                        }
+
+                    }
+                }
+
+                .amount {
+                    height: 160px;
+                    border: rgba(179, 235, 248, 1) 1px solid;
+                    background-color: rgba(179, 235, 248, 0.1);
+                }
+            }
+
+            .pronunciation {
+                .graph {
+                    border: rgba(12, 224, 156, 0.35) 1px solid;
+                    background-color: rgba(12, 224, 156, 0.03);
+                    .data {
+                        font-size: 35px;
+                        line-height: 20px;
+                        font-weight: bold;
+                        color: #0CE09C;
+                    }
+                    .progress {
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance: none;
+                        display: block;
+                        width: 100px;
+                        height: 10px;
+                        color: rgba(12, 224, 156, 1);
+                    }
+                    progress::-webkit-progress-bar {
+                        border: rgba(12, 224, 156, 1) 1px solid;
+                        background-color: #C0FBE8;
+                      }
+                      progress::-webkit-progress-value {
+                        background-color: rgba(12, 224, 156, 1);
+                      }
+
+                }
+            }
+
+            .emotion {
+                .graph {
+                    height: 280px;
+                    border: rgba(179, 235, 248, 1) 1px solid;
+                    background-color: rgba(179, 235, 248, 0.1);
+                }
+            }
+
+            .pose {
+                .graph {
+                    height: 280px;
+                    .data-wrapper {
+                        height: 260px;
+                        overflow: scroll;
+                        img {
+                            width: 100%;
+                            height: auto;
+                            border-radius: 0;
+                        }
+                    }   
+                }
+            }
+
+            .word-cloud {
+                .graph {
+                    justify-content: flex-start;
+                    overflow: visible;
+                    border: rgba(179, 235, 248, 1) 1px solid;
+                    background-color: rgba(179, 235, 248, 0.1);
+                    height: 180px;
+                }
+                .feedback {
+                    height: 70px;
+                }
+            }
+            
+            .dependency {
+                .data {
+                    font-size: 35px;
+                    line-height: 20px;
+                    font-weight: bold;
+                    color: #0CE09C;
+                }
+                .progress {
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    display: block;
+                    width: 100px;
+                    height: 10px;
+                    color: rgba(12, 224, 156, 1);
+                }
+                progress::-webkit-progress-bar {
+                    border: rgba(12, 224, 156, 1) 1px solid;
+                    background-color: #C0FBE8;
+                  }
+                  progress::-webkit-progress-value {
+                    background-color: rgba(12, 224, 156, 1);
+                  }
             }
         }
     }
