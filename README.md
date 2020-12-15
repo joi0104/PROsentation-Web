@@ -5,7 +5,7 @@ PROsentation 프론트 개발을 위한 레포지토리 입니다.
 ## Installation
 - git clone
 ```
-    git clone https://git.swmgit.org/swmaestro/PROsentation-Frontend.git
+    git clone https://github.com/joi0104/PROsentation-Web.git
 ```
 - install package
 ```
@@ -16,12 +16,12 @@ PROsentation 프론트 개발을 위한 레포지토리 입니다.
 ## Usage
 - project build
 ```
-    yarn run build
+    yarn build
     npm build
 ```
 - project start
 ```
-    yarn run start
+    yarn start
     npm start
 ```
 
