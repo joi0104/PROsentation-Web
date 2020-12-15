@@ -28,24 +28,23 @@ PROsentation 프론트 개발을 위한 레포지토리 입니다.
 ## Stack
 - `react`
 - `react-saga`
-- `redux`
+- `sass` `css module`
+- `contextAPI`
+- `webRTC`
+- `recordRTC`
+- `PDFtron`
 
 ## Project Setting
 - `CRA`
 - `eslint`,`prettier`,`commitlint`,`husky`
-- `gitlab CI/CD` 도입예정
-
-## Progess
-- [Issue](https://13.125.91.162/swmaestro/PROsentation-Frontend/issues) 및 [Boards](https://13.125.91.162/swmaestro/PROsentation-Frontend/-/boards) 로 관리
-
-## Development goal
-- [Milestones](https://13.125.91.162/swmaestro/PROsentation-Frontend/-/milestones) 로 관리
 
 ## Wireframe
-- [Figma 이용](https://www.figma.com/file/VMrRCqwbti0cibct0bKTbO/프로젠테이션-와이어프레임-ver.0.1?node-id=86%3A925)
+- [Figma 이용](https://www.figma.com/file/VMrRCqwbti0cibct0bKTbO/%ED%94%84%EB%A1%9C%EC%A0%A0%ED%85%8C%EC%9D%B4%EC%85%98-%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84-ver.0.1)
 
-![image](/uploads/8a79ba100fbb2d536e64e7997092fa3d/image.png)
-![image](/uploads/835a5942a402d916cc391a07ea2b81e7/image.png)
+<img width="1087" alt="image" src="https://user-images.githubusercontent.com/28296417/102232388-65935080-3f32-11eb-8f65-1e757c78427c.png">
+
+<img width="1087" alt="image" src="https://user-images.githubusercontent.com/28296417/102232463-7e9c0180-3f32-11eb-8520-7cb23c874435.png">
+
 
 ## Workflow
 - 작업할 이슈를 `Doing` 칸반보드에 옮긴다.
@@ -61,15 +60,6 @@ PROsentation 프론트 개발을 위한 레포지토리 입니다.
     - `develop` -> 작업내역들이 합쳐지는 브렌치
     - `feature` -> 기능단위의 작업 브렌치 -> 로컬단에서는 `feature/기능` 으로 관리
     - `hotfix` -> 버그 수정 브렌치
-
-## Templates
-- [Commit message Template](https://git.swmgit.org/swmaestro/PROsentation-Frontend/-/wikis/Commit-message-Template)
-![image](/uploads/90fbe8b1bf28e44f94173a2b2aa41017/image.png)
-- [Issue Template](https://git.swmgit.org/swmaestro/PROsentation-Frontend/-/wikis/Issue-Template)
-![image](/uploads/67d5a4f22c1f7655801230d8d8758d0c/image.png)
-![image](/uploads/335562a3931f6c93b3c99923802c2567/image.png)
-- [Merge requests Template](https://git.swmgit.org/swmaestro/PROsentation-Frontend/-/wikis/Merge-requests-Template)
-![image](/uploads/d7f4ddf09b43ceea4ea09d74913f5422/image.png)
-
+    
 ## Support
 - [SW마에스트로](http://swmaestro.org/user/main.do)
