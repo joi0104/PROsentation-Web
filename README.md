@@ -1,6 +1,8 @@
-# PROsentation-Frontend
-PROsentation 프론트 개발을 위한 레포지토리 입니다.
+# PROsentation
+PROsentation는 사용자의 발표를 AI가 종합적으로 분석하여 피드백을 제공해주느 서비스 입니다.
 
+# PROsentation-Frontend
+위 레포지토리는 PROsentation 프론트 개발을 위한 레포지토리 입니다.
 
 ## Installation
 - git clone
